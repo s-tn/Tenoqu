@@ -429,6 +429,14 @@ body {
 
 /*Loading Screen*/
 
+.before-loading {
+  z-index: 99999999999999999999999;
+  height: 300vw;
+  width: 300vw;
+  background: #323232;
+  border-radius: 100%;
+}
+
 .before-loading div * {
   display: block;
   margin: auto;
