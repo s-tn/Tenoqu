@@ -5,10 +5,10 @@ const APP = document.querySelector('#app')
 const main = {
   load: {
     login: () => {
-      var ws = new WebSocket('wss://'+location.host+'/auth-gateway?v=2')
-      worker.log('Connecting Login Socket, wss://'+location.host+'/auth-gateway?v=2')
+      var ws = new WebSocket('wss://' + location.host + '/auth-gateway?v=2')
+      worker.log('Connecting Login Socket, wss://' + location.host + '/auth-gateway?v=2')
       ws.onopen = function() {
-        parent.postMessage("Toop",'*');
+        parent.postMessage("Toop", '*');
         ws.send(JSON.stringify({
           token: localStorage['token'],
           uid: atob(localStorage['token'].split('.')[0])
@@ -17,7 +17,7 @@ const main = {
       ws.onmessage = function(e) {
         var data = JSON.parse(e.data.toString())
         localStorage.setItem('udata', JSON.stringify(data.udata))
-        if (data.status=='success' && data.udata) {
+        if (data.status == 'success' && data.udata) {
           location.pathname.split('/channels/')[1] ? main.app.redirect(location.pathname, true) : main.app.redirect('/channels/@me', true)
         } else {
           location.href = '/login'
@@ -31,6 +31,10 @@ const main = {
   app: {
     ws: {},
     par: '',
+    request: async (method, path, query) => {
+      var e = await fetch('/api/v' + window.TenoquOpts.apiVersion + '/' + method + '/' + path + query.map((e, i) => i == 0 ? `?${e[0]}=${e[1]}` : `&${e[0]}=${e[1]}`).join(''), { method: 'GET', headers: {'content-type': 'text/js'}})
+      return e
+    },
     init: () => {
       main.app.loScr(3000)
       setTimeout(() => {
@@ -57,10 +61,10 @@ const main = {
       }, 2500)
     },
     redirect: (page, load) => {
-      history.pushState({page: 'Chat'}, "Chat", window.location.origin+page)
-      router.log('Transferring to '+page)
+      history.pushState({ page: 'Chat' }, "Chat", window.location.origin + page)
+      router.log('Transferring to ' + page)
       if (load) return main.app.init();
-      window.dispatchEvent(new CustomEvent("pushState", {'detail': page}))
+      window.dispatchEvent(new CustomEvent("pushState", { 'detail': page }))
     },
     loadChannel: (url) => {
       console.log(url)
@@ -83,19 +87,19 @@ const main = {
       insideDiv.insertAdjacentElement('afterBegin', img)
       loading_over.appendChild(insideDiv)
       APP.appendChild(loading_over)
-      flux.log('['+new Date().getTime()+'] Start')
-      var imgarray = ["blobbounce.gif", "eoooo.gif", "kurbrun.gif", "pandahapi.gif", "catspin1.gif", "eoooo.gif", "nezrun.gif", "NEOOOO.gif", "fastcat.gif", "slowfrog.gif", "rgbfrog.gif"]
+      flux.log('[' + new Date().getTime() + '] Start')
+      var imgarray = ["blobbounce.gif", "eoooo.gif", "kurbrun.gif", "pandahapi.gif", "catspin1.gif", "eoooo.gif", "nezrun.gif", "NEOOOO.gif", "fastcat.gif", "slowfrog.gif", "rgbfrog.gif", "logo.gif"]
       var r1 = Math.random() * (1000 - 100) + 100
-      if (r1>=990) {
+      if (r1 >= 990) {
         var r2 = imgarray.length
         imgarray[r2] = 'amogus.gif'
       } else {
-        var r2 = Math.round(Math.random() * (imgarray.length-1 - 0) + 0)
+        var r2 = Math.round(Math.random() * (imgarray.length - 1 - 0) + 0)
       }
-      r2 = '/loading-gifs/'+imgarray[r2]
+      r2 = '/loading-gifs/' + imgarray[r2]
       document.querySelector('.load-icon').src = r2
       var factsArray = ["This is... A clone... of Discord!", "made by god", "pls no sue discord", "Tenoqu >>>", "GreenWorld is the best :D", "ur mom hehe", "Nebula is cool", "TN ride or die"]
-      document.querySelector('.fun-fact').innerText = factsArray[Math.round(Math.random() * (factsArray.length-1)+0)]
+      document.querySelector('.fun-fact').innerText = factsArray[Math.round(Math.random() * (factsArray.length - 1))]
       setTimeout(() => {
         document.querySelector('.before-loading').style.transform = 'scale(1)'
       }, 100)
@@ -112,18 +116,18 @@ window.scrollY = '0'
 
 //onload = main.app.init
 
-function scrollSmoothToBottom () {
-   var div = document.getElementById('message-wrap');
-   $('#message-wrap').animate({
-      scrollTop: div.scrollHeight - div.clientHeight
-   }, 0);
+function scrollSmoothToBottom() {
+  var div = document.getElementById('message-wrap');
+  $('#message-wrap').animate({
+    scrollTop: div.scrollHeight - div.clientHeight
+  }, 0);
 }
 
 window.addEventListener('pushState', (e) => {
   main.app.loadChannel(e.detail)
 })
 
-window.onload = function() {/*if(location.pathname.startsWith('/app')) {main.load.login()} else if (location.pathname.startsWith('/channels/')) main.load.go();*/main.load.login()}
+window.onload = function() {/*if(location.pathname.startsWith('/app')) {main.load.login()} else if (location.pathname.startsWith('/channels/')) main.load.go();*/main.load.login() }
 
 Array.prototype.delete = function(index) {
   delete this[index]
@@ -145,17 +149,17 @@ router.log = function() {
 
 function code() {
   var code = (prompt('enter code') || 0000000).toString()
-  if (code.length!==7) {
+  if (code.length !== 7) {
     return alert('invalid code')
   }
-  var codews = new WebSocket('wss://'+location.host+'/code?v=1')
-  worker.log('Connecting Code Socket, wss://'+location.host+'/code?v=1')
-  codews.onopen = function() {codews.send(JSON.stringify({code: code, token: localStorage['token']}))}
+  var codews = new WebSocket('wss://' + location.host + '/code?v=1')
+  worker.log('Connecting Code Socket, wss://' + location.host + '/code?v=1')
+  codews.onopen = function() { codews.send(JSON.stringify({ code: code, token: localStorage['token'] })) }
   codews.onmessage = function(m) {
     var data = JSON.parse(m.data)
-    if (data.status=="success") {
+    if (data.status == "success") {
       var cofn = confirm('Confirm Login')
-      codews.send(JSON.stringify({mode: 2, code: code, token: localStorage['token']}))
+      codews.send(JSON.stringify({ mode: 2, code: code, token: localStorage['token'] }))
     } else {
       alert('code no exist')
     }
@@ -176,7 +180,7 @@ function imageify(text) {
     } else {
       var split = text.split(" ", 1);
       var end = text.split(' ').slice(1).join(' ')
-      text = "<img src='"+split+"'>"+ ' '  + end
+      text = "<img src='" + split + "'>" + ' ' + end
     }
   }
   return text

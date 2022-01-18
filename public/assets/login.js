@@ -8,7 +8,7 @@ const discord = {
       }
       ws.onmessage = function(e) {
         ws.messages++
-        if (ws.messages==2) {
+        if (ws.messages == 2) {
           console.log(e.data)
           discord.login(JSON.parse(e.data.toString()))
         }
@@ -22,11 +22,11 @@ const discord = {
       location.href = '/app'
     },
     error: (r) => {
-      if (r.message=='rform') {
-        if(r.e.indexOf('username')>-1) {
+      if (r.message == 'rform') {
+        if (r.e.indexOf('username') > -1) {
           document.getElementById('user').style.borderColor = "rgb(237, 66, 69)"
         }
-        if(r.e.indexOf('password')>-1) {
+        if (r.e.indexOf('password') > -1) {
           document.getElementById('pass').style.borderColor = "rgb(237, 66, 69)"
         }
       }
@@ -58,11 +58,11 @@ const discord = {
       http.onreadystatechange = function() {
         document.getElementById('pass').style.borderColor = "rgb(0, 0, 0, 0.3)"
         document.getElementById('user').style.borderColor = "rgb(0, 0, 0, 0.3)"
-        if (http.status==200 && http.readyState==4) {
+        if (http.status == 200 && http.readyState == 4) {
           console.log(JSON.parse(JSON.stringify(http.responseText))["crypt"])
           discord.load.init(JSON.parse(http.responseText).crypt)
         }
-        else if (http.status!==200 && http.readyState==4) {
+        else if (http.status !== 200 && http.readyState == 4) {
           discord.load.error(JSON.parse(http.responseText))
         }
       }
@@ -79,7 +79,7 @@ const discord = {
 
     window.lCont = loginContainer
 
-    var QRSocket = new WebSocket('wss://'+location.host+'/qrsocket?v=1')
+    var QRSocket = new WebSocket('wss://' + location.host + '/qrsocket?v=1')
     QRSocket.onopen = function() {
       QRSocket.send(JSON.stringify(i))
     }
@@ -88,7 +88,7 @@ const discord = {
         return (() => {
           lCont.innerHTML = ''
           lCont.setAttribute('style', 'background: #36393f;display:flex;align-items:center;justify-content:center;color:white;')
-          lCont.insertAdjacentHTML('beforeend', '<div><p style="margin-bottom: 5px;text-align: center;font-size: 23px;">'+JSON.parse(e.data).name+'</p><br><h1 style="text-align: center;margin-top: 0;">Check Your Device<br>Click "Allow" To Sign In</h1><div style="text-align: center;font-size:18px;">Not You? <a style="color:white" href="javascript:location.reload(false);">Return</a></div></div>')
+          lCont.insertAdjacentHTML('beforeend', '<div><p style="margin-bottom: 5px;text-align: center;font-size: 23px;">' + JSON.parse(e.data).name + '</p><br><h1 style="text-align: center;margin-top: 0;">Check Your Device<br>Click "Allow" To Sign In</h1><div style="text-align: center;font-size:18px;">Not You? <a style="color:white" href="javascript:location.reload(false);">Return</a></div></div>')
         })()
       }
       if (JSON.parse(e.data).mode) {
@@ -103,6 +103,6 @@ const discord = {
 
 discord.load.sessionCode = discord.load.generate()
 
-window.onload = discord.load.initiate(new WebSocket('wss://'+location.host+'/gateway?v=2&socket='+discord.load.sessionCode))
+window.onload = discord.load.initiate(new WebSocket('wss://' + location.host + '/gateway?v=2&socket=' + discord.load.sessionCode))
 
-if (localStorage['token'] && localStorage['token']!=='undefined') location.href = 'app'
+if (localStorage['token'] && localStorage['token'] !== 'undefined') location.href = 'app'
