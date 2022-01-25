@@ -9,7 +9,6 @@ const discord = {
       ws.onmessage = function(e) {
         ws.messages++
         if (ws.messages == 2) {
-          console.log(e.data)
           discord.login(JSON.parse(e.data.toString()))
         }
       }
@@ -19,7 +18,7 @@ const discord = {
     },
     init: (token) => {
       localStorage['token'] = token
-      location.href = '/app'
+      location.href = '/channels/'
     },
     error: (r) => {
       if (r.message == 'rform') {
@@ -59,7 +58,6 @@ const discord = {
         document.getElementById('pass').style.borderColor = "rgb(0, 0, 0, 0.3)"
         document.getElementById('user').style.borderColor = "rgb(0, 0, 0, 0.3)"
         if (http.status == 200 && http.readyState == 4) {
-          console.log(JSON.parse(JSON.stringify(http.responseText))["crypt"])
           discord.load.init(JSON.parse(http.responseText).crypt)
         }
         else if (http.status !== 200 && http.readyState == 4) {

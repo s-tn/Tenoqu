@@ -31,13 +31,43 @@ const main = {
   app: {
     ws: {},
     par: '',
+    InitLoad: () => {
+      return new Promise((f, a) => {
+        var src_map = ['servers.js', 'stickers.js', 'emoji.js', 'info.js', 'handler.js', 'channelLoad.js'];
+        src_map.forEach((src) => {
+          var Src = src
+          const Elem = document.createElement('script');
+          src = '/chunks/'+src
+          Elem.setAttribute('src', src);
+          try {
+            fetch(src).then(e => e.text()).then(e => {document.head.appendChild(Elem);f(true)}).catch(e => {flux.log('Loading Chunk '+src_map.indexOf(Src)+' Failed: '+src);f(false)})
+          } catch {
+            flux.log('Loading Chunk '+src_map.indexOf(Src)+' Failed: '+src)
+            f(false)
+          }
+        })
+      })
+    },
     request: async (method, path, query) => {
-      var e = await fetch('/api/v' + window.TenoquOpts.apiVersion + '/' + method + '/' + path + query.map((e, i) => i == 0 ? `?${e[0]}=${e[1]}` : `&${e[0]}=${e[1]}`).join(''), { method: 'GET', headers: {'content-type': 'text/js'}})
-      return e
+      var e = await fetch('/api/v' + window.TenoquOpts.apiVersion + '/' + method + '/' + path + query.map((e, i) => i == 0 ? `?${e[0]}=${e[1]}` : `&${e[0]}=${e[1]}`).join(''), { method: 'GET', headers: {'content-type': 'text/js','Authorization': localStorage['token']}})
+      if (e.status!==200) {worker.log('Channel Fetch Failed: ' + (path==''?undefined:path));return []}
+      return e.json()
+    },
+    plain: async (method, path, query) => {
+      var e = await fetch('/api/v' + window.TenoquOpts.apiVersion + '/' + method + '/' + path + query.map((e, i) => i == 0 ? `?${e[0]}=${e[1]}` : `&${e[0]}=${e[1]}`).join(''), { method: 'GET', headers: {'content-type': 'text/js','Authorization': localStorage['token']}})
+      if (e.status!==200) {worker.log('Channel Fetch Failed: ' + (path==''?undefined:path));return []}
+      return e.text()
+    },
+    Terminate: () => {
+      setTimeout(() => {
+        try {console.error('Error: App Terminated')} catch(e) {}
+      }, 3000)
+      APP.remove();
+      throw new Error('Tenoqu Load Status: Aborted')
     },
     init: () => {
       main.app.loScr(3000)
-      setTimeout(() => {
+      setTimeout(async () => {
         var guilds = document.createElement('div');
         var channels = document.createElement('div');
         var messageWrap = document.createElement('div');
@@ -45,7 +75,15 @@ const main = {
         guilds.classList.add('guilds')
         channels.classList.add('channels')
         messageWrap.classList.add('message-wrapper')
+        messageWrap.insertAdjacentHTML('afterbegin', '<input type="file">')
         members.classList.add('users')
+        var channelsHead = document.createElement('div')
+        channelsHead.classList.add('server-info')
+        channelsHead.innerText = ''
+        channels.insertAdjacentElement('afterbegin', channelsHead)
+        var cList = document.createElement('div')
+        cList.classList.add('clist')
+        channels.insertAdjacentElement('beforeend', cList)
         APP.insertAdjacentElement('beforeend', guilds)
         APP.insertAdjacentElement('beforeend', channels)
         APP.insertAdjacentElement('beforeend', messageWrap)
@@ -56,22 +94,33 @@ const main = {
         var dms = document.createElement('div')
         dms.classList.add('direct-messaging')
         dms.insertAdjacentHTML('afterbegin', `<div class="dm-divider"></div>`)
-        dms.insertAdjacentHTML('afterbegin', `<div class="home-label server-init selected" data-predir="@me"><span></span><svg class="homeIcon-AaowEC" aria-hidden="false" width="28" height="20" viewBox="0 0 28 20"><path fill="currentColor" d="M23.0212 1.67671C21.3107 0.879656 19.5079 0.318797 17.6584 0C17.4062 0.461742 17.1749 0.934541 16.9708 1.4184C15.003 1.12145 12.9974 1.12145 11.0283 1.4184C10.819 0.934541 10.589 0.461744 10.3368 0.00546311C8.48074 0.324393 6.67795 0.885118 4.96746 1.68231C1.56727 6.77853 0.649666 11.7538 1.11108 16.652C3.10102 18.1418 5.3262 19.2743 7.69177 20C8.22338 19.2743 8.69519 18.4993 9.09812 17.691C8.32996 17.3997 7.58522 17.0424 6.87684 16.6135C7.06531 16.4762 7.24726 16.3387 7.42403 16.1847C11.5911 18.1749 16.408 18.1749 20.5763 16.1847C20.7531 16.3332 20.9351 16.4762 21.1171 16.6135C20.41 17.0369 19.6639 17.3997 18.897 17.691C19.3052 18.4993 19.7718 19.2689 20.3021 19.9945C22.6677 19.2689 24.8929 18.1364 26.8828 16.6466H26.8893C27.43 10.9731 25.9665 6.04728 23.0212 1.67671ZM9.68041 13.6383C8.39754 13.6383 7.34085 12.4453 7.34085 10.994C7.34085 9.54272 8.37155 8.34973 9.68041 8.34973C10.9893 8.34973 12.0395 9.54272 12.0187 10.994C12.0187 12.4453 10.9828 13.6383 9.68041 13.6383ZM18.3161 13.6383C17.0332 13.6383 15.9765 12.4453 15.9765 10.994C15.9765 9.54272 17.0124 8.34973 18.3161 8.34973C19.6184 8.34973 20.6751 9.54272 20.6543 10.994C20.6543 12.4453 19.6184 13.6383 18.3161 13.6383Z"></path></svg></div>`)
+        dms.insertAdjacentHTML('afterbegin', `<div class="home-label server-init selected" data-predir="@me"><span></span><img src="/loading-gifs/ve.svg"></div>`)
+        var create = document.createElement('div')
+        create.classList.add('create-server')
+        guilds.insertAdjacentElement('beforeend', create)
         guilds.insertAdjacentElement('afterbegin', dms)
-      }, 2500)
+        var serverAdd = document.createElement('div')
+        serverAdd.classList.add('add-server')
+        var mainSAdd = document.createElement('div')
+        serverAdd.appendChild(mainSAdd)
+        document.body.appendChild(serverAdd)
+        document.querySelectorAll('img').forEach(e => {e.ondragstart = function() { return false; }}); 
+        main.app.loadChannel();
+      }, 1000)
     },
     redirect: (page, load) => {
       history.pushState({ page: 'Chat' }, "Chat", window.location.origin + page)
-      router.log('Transferring to ' + page)
+      router.log('Timestamp: ['+new Date().getTime()+']'+' Transferring to ' + page)
       if (load) return main.app.init();
       window.dispatchEvent(new CustomEvent("pushState", { 'detail': page }))
     },
-    loadChannel: (url) => {
-      console.log(url)
-    },
-    loScr: (time) => {
+    loScr: async (time) => {
+      var ChunksLoaded = await main.app.InitLoad()
+      if (ChunksLoaded!==true) {
+        main.app.Terminate();
+      }
       var loading_over = document.createElement('div')
-      loading_over.setAttribute('style', 'transform: scale(0);transition: all 0.5s ease;width: 100%;height:100vh;position:absolute;display:flex;align-items:center;justify-content:center;color:white;user-select: none;')
+      loading_over.setAttribute('style', 'transform: scale(0);transition: all 0.5s ease;width: 200vw;height:200vw;position:absolute;display:flex;align-items:center;justify-content:center;color:white;user-select: none;')
       loading_over.classList.add('before-loading')
       var insideDiv = document.createElement('div')
       var img = document.createElement('img')

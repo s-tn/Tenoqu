@@ -1,8 +1,17 @@
+/* 
+
+CSS for App Login Page
+Copyright 2022 Tenoqu Co. 
+Front-End by @GreenWorld#0001 & @EnderKingJ#0001
+Backend by @EnderKingJ#0001
+
+*/
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 body {
   margin: 0;
-  background: #222;
+  background:  #E7D4B5;
 }
 
 * {
@@ -17,7 +26,7 @@ body {
 
 .login-container .login-form {
   display: flex;
-  background: #36393f;
+  background: #A0937D;
   width: 100%;
   height: 100%;
 }
@@ -104,7 +113,7 @@ body {
 }
 
 .inputs-container input:not(input[type=submit]):focus {
-  border: 1px solid rgba(59, 130, 246);
+  border: 1px solid #E3CDC1;
 }
 
 #app {
@@ -118,7 +127,7 @@ body {
 input[type=submit] {
   transition: 0.2s ease;
   display: block;
-  background: rgb(88, 101, 242);
+  background: #E3CDC1;
   border: 1px solid rgba(0,0,0,0.3);
   border-radius: 2px;
   color: white;
@@ -130,7 +139,7 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-  background: rgb(78, 89, 216);
+  background: #E3CDC1;
 }
 
 @media only screen and (max-width: 800px) {
