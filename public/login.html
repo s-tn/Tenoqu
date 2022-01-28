@@ -1,7 +1,7 @@
 <!--
 
 Page: App Login Page
-Copyright 2022 Tenoqu Co. 
+Copyright 2022 Tenoqu inc. 
 Front-End by @GreenWorld#0001 & @EnderKingJ#0001
 Backend by @EnderKingJ#0001
 
@@ -10,11 +10,91 @@ Backend by @EnderKingJ#0001
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="/assets/login.js"></script>
+    <script src="/assets/login.js">
+    </script>
     <title>Tenoqu - Login</title>
     <link rel="stylesheet" href="/assets/login.css">
+    <link rel="icon" type="image/x-icon" href="https://cdn.tenoqu.xyz/servericons/928375302938/8be52e156c5346ed9e732a2076dbac1f.svg">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.js"></script>
   </head>
-  <body>
-    <div id="app"></div>
+  <body><div id="container">
+    <div id="inviteContainer">
+        <div class="logoContainer"><img class="logo" src="https://cdn.tenoqu.xyz/servericons/928375302938/8be52e156c5346ed9e732a2076dbac1f.svg" /><img class="text" src="https://tenoqu.xyz/assets/Untitled.png" /></div>
+        <div class="acceptContainer">
+            <form id="AHH">
+                <h1>WELCOME BACK!</h1>
+                <div class="formContainer">
+                    <div class="formDiv" style="transition-delay: 0.2s">
+                        <p>EMAIL</p><input id="user-input" placeholder="mellow@tenoqu.com" type="email" required="" />
+                    </div> 
+                    <div class="formDiv" style="transition-delay: 0.4s">
+                        <p>PASSWSORD</p><input id="pass-input" type="password" required="" /><a class="forgotPas" href="#">FORGOT YOUR PASSWORD?</a>
+                    </div>
+                    <div class="formDiv" style="transition-delay: 0.6s"><button class="acceptBtn" type="submit">Login</button><span class="register">Need an account?<a href="#">Register</a></span></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    <script> // JQUERY
+$(function() {
+	
+	var images = [''];
+
+   $('#container').append('<style>#container, .acceptContainer:before, #logoContainer:before {background: url(' + images[Math.floor(Math.random() * images.length)] + ') center fixed }');
+	
+	
+	
+	
+	setTimeout(function() {
+		$('.logoContainer').transition({scale: 1}, 700, 'ease');
+		setTimeout(function() {
+			$('.logoContainer .logo').addClass('loadIn');
+			setTimeout(function() {
+				$('.logoContainer .text').addClass('loadIn');
+				setTimeout(function() {
+					$('.acceptContainer').transition({height: '431.5px'});
+					setTimeout(function() {
+						$('.acceptContainer').addClass('loadIn');
+						setTimeout(function() {
+							$('.formDiv, form h1').addClass('loadIn');
+						}, 500)
+					}, 500)
+				}, 500)
+			}, 500)
+		}, 1000)
+	}, 10)
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+});
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c9bd72d8bfd44517a37551d53e850aa0"}'></script><!-- End Cloudflare Web Analytics -->
   </body>
 </html>

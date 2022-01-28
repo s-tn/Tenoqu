@@ -1,6 +1,21 @@
 {
   "923819593442": {
-    "name": " • goneral",
+    "name": " • general",
     "category": "938248374029"
+  },
+  "214135977738": {
+    "name": " • off-topic",
+    "category": "938248374029"
+  },
+  "458763489793": {
+    "name": " • announcements",
+    "category": "345789234435"
+  },
+  "453834276348": {
+    "name": " • rules",
+    "category": "345789234435"
+  },
+  "743657896346": {
+    "name": " • welcome"
   }
 }

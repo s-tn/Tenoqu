@@ -8,32 +8,38 @@ Backend by @EnderKingJ#0001
 -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tenoqu: The best chat app for developers</title>
-      <link rel="icon" type="image/x-icon" href="loading-gifs/logo.png">
 
-    <link rel="stylesheet" href="/assets/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css">
-    <meta name="description" content="Tenoqu: The best Chat App for Developers">
-  <meta name="keywords" content="HTML, CSS, JavaScript, tenoqu, discord, api, developers, devs,">
-  <meta name="author" content="Tenoqu inc.">
-  <meta name='category' content='messaging, developers'>
-<meta name='coverage' content='Worldwide'>
-<meta name='distribution' content='Global'>
-<meta name='rating' content='13+'>
-  </head>
+<head>
+   <meta name="description" content="Tenoqu: The Cozy, Free, Easy-to-use, Developer-Friendly Chatting App!">
+  <meta name="theme-color" content="#e6c59c">
+  <meta name="og:image" content="https://cdn.tenoqu.xyz/servericons/928375302938/8be52e156c5346ed9e732a2076dbac1f.svg">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Tenoqu: The best chat app for developers</title>
+	<link rel="icon" type="image/x-icon" href="https://cdn.tenoqu.xyz/servericons/928375302938/8be52e156c5346ed9e732a2076dbac1f.svg">
+  
+<script src="index.js"></script>
 
-  <body>
-    <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Warning</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	<link rel="stylesheet" href="/assets/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css">
+	<meta name="description" content="Tenoqu: The best Chat App for Developers">
+	<meta name="keywords" content="HTML, CSS, JavaScript, tenoqu, discord, api, developers, devs,">
+	<meta name="author" content="Tenoqu inc.">
+	<meta name='category' content='messaging, developers'>
+	<meta name='coverage' content='Worldwide'>
+	<meta name='distribution' content='Global'>
+	<meta name='rating' content='13+'>
+</head>
+
+<body>
+	<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">Warning</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -52,7 +58,7 @@ Backend by @EnderKingJ#0001
 <div class="landing-page">
   <div class="container">
     <div class="header-area">
-      <div class="logo"> <img src="loading-gifs/logo.gif">
+      <div class="logo"> 
       Tenoqu
 
       </div>
@@ -67,13 +73,15 @@ Backend by @EnderKingJ#0001
     <div class="info">
       <h1><b>Tenoqu</b></h1>
       <p>Since Tenoqu's development began, the point was to make the best chat application for developers. Made for developers, by developers (Duh, though)</p>
-      <div class="demo">
-      <button  data-toggle="modal" data-target="#basicModal">Get Started</button>
+      <div class="demo" data-tilt data-tilt-full-page-listening data-tilt-scale="1" data-tilt-startX="-20" data-tilt-startY="20">
+      <button data-toggle="modal" data-target="#basicModal">Get Started</button>
       </div>
     </div>
     
-    <div class="image">
-      <img id="img" src="loading-gifs/ve.svg">
+    <div class="image" data-tilt data-tilt-full-page-listening data-tilt-scale="1.1" data-tilt-startX="-20" data-tilt-startY="20" data-tilt-glare data-tilt-max-glare="0.8">
+     
+      <img  data-tilt data-tilt-glare data-tilt-max-glare="0.8" id="img" src="loading-gifs/ve.svg">
+
     </div>
     
     <div class="clearfix"></div>
@@ -84,12 +92,23 @@ Backend by @EnderKingJ#0001
 <script>
   document.getElementById('img').ondragstart = function() { return false; };
 
+  document.addEventListener('contextmenu', event => event.preventDefault());
+
+
  </script>
 <!-- End Landing Page -->
 <script src="index.js"></script>
-
+<!-- Jquery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- PopperJS -->
   <script src="https://unpkg.com/popper.js"></script>
+  <!-- Bootstrap -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+  <!-- TILTJS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"> </script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c9bd72d8bfd44517a37551d53e850aa0"}'></script><!-- End Cloudflare Web Analytics -->
+<script src="tilt.jquery.js"></script>
+<script type="text/javascript" src="vanilla-tilt.js"></script>
   </body>
 </html>

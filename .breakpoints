@@ -3,9 +3,17 @@
     "accounts/credential.json": [
       {
         "id": "47d386b3-ff1b-4ae0-8444-fee41276746b",
-        "line": 20,
-        "version": 267,
-        "index": 409
+        "line": 26,
+        "version": 314,
+        "index": 560
+      }
+    ],
+    "package.json": [
+      {
+        "id": "30791651-d25f-4789-9f5b-8032df2c5b58",
+        "line": 26,
+        "version": 6,
+        "index": 652
       }
     ],
     "public/@me/index.html": [
@@ -16,12 +24,20 @@
         "index": 347
       }
     ],
+    "public/assets/join.js": [
+      {
+        "id": "7f633737-7142-4cc1-88e3-9e23b0c1f586",
+        "line": 69,
+        "version": 85,
+        "index": 2362
+      }
+    ],
     "public/assets/login.css": [
       {
         "id": "53085811-d106-4048-b182-0a97dd7f838c",
-        "line": 11,
-        "version": 59,
-        "index": 217
+        "line": 207,
+        "version": 142,
+        "index": 3967
       }
     ],
     "ws.js": [

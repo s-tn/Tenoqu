@@ -1,0 +1,159 @@
+/* 
+
+CSS for App Login Page
+Copyright 2022 Tenoqu Co. 
+Front-End by @GreenWorld#0001 & @EnderKingJ#0001
+Backend by @EnderKingJ#0001
+
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+body {
+  margin: 0;
+  background:  #E7D4B5;
+}
+
+* {
+  font-family: "Open Sans", sans-serif;
+}
+
+.login-container {
+  background: transparent;
+  width: 750px;
+  height: 400px;
+}
+
+.login-container .login-form {
+  display: flex;
+  background: #A0937D;
+  width: 100%;
+  height: 100%;
+}
+
+.code-container {
+  width: 45%;
+  display: inline-block;
+  height: 100%;
+  position: relative;
+  background: transparent
+}
+
+.show-code {
+  background: rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 50%;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  padding: 20px;
+  word-wrap: break-word;
+  height: calc(0.5 * 315px);
+  width: calc(0.5 * 315px);
+  position: absolute;
+  top: calc(20% - 24px);
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+}
+
+.code-info {
+  color: white;
+  font-size: 17px;
+  position: absolute;
+  bottom: 16%;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  right: 0;
+  margin: auto;
+}
+
+.cob {
+  display: block;
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.inputs-container {
+  width: 55%;
+  height: 100%;
+  display: inline-block;
+  text-align: center;
+}
+
+.title-login {
+  color: white;
+  font-weight: normal;
+  font-size: 25px;
+  display: block;
+}
+
+.inputs-container {display: flex;align-items: center;}
+
+.inputs-container input {
+  display: block;
+  margin: auto;
+}
+
+.inputs-container input:not(input[type=submit]) {
+  color: #dcddde;
+  background: rgba(0,0,0,0.1);
+  border-radius: 2px;
+  padding: 8px;
+  width: 70%;
+  margin-top: 20px;
+  outline: none;
+  transition: all 0.25s ease-in-out;
+  font-size: 16px;
+  border: 1px solid rgb(0, 0, 0, 0.3);
+}
+
+.inputs-container input:not(input[type=submit]):focus {
+  border: 1px solid #E3CDC1;
+}
+
+#app {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type=submit] {
+  transition: 0.2s ease;
+  display: block;
+  background: #E3CDC1;
+  border: 1px solid rgba(0,0,0,0.3);
+  border-radius: 2px;
+  color: white;
+  padding: 12px 20px;
+  margin-top: 20px;
+  width: calc(70% + 22px);
+  text-align: center;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background: #E3CDC1;
+}
+
+@media only screen and (max-width: 800px) {
+  .login-container {
+    width: 400px;
+  }
+  .code-container {
+    display: none;
+  }
+  .inputs-container {
+    width: 100%;
+  }
+}
+
+a {
+  color: #E3CDC1;
+}

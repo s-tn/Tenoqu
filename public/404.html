@@ -1,52 +1,109 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
-  <head>
-    <style>
-      
-// helper
-.center-xy {
-  // width: inherit;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
+
+<head>
+  <title> There was an error. </title>  
+   <meta name="description" content="Tenoqu: The Cozy, Free, Easy-to-use, Developer-Friendly Chatting App!">
+  <meta name="theme-color" content="#e6c59c">
+  <meta name="og:image" content="https://cdn.tenoqu.xyz/servericons/928375302938/8be52e156c5346ed9e732a2076dbac1f.svg">
+	<style>
+   @font-face {
+  src: url('/assets/lazy_dog.ttf');
+  font-family: 'lazydog';
+}
+
+body{ 
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  background: #131313;
+  color: #fff;
+  font-size: 96px;
+  font-family: 'lazydog';
+  letter-spacing: -7px;
+}
+
+
+div{
+  animation: glitch 1s linear infinite;
+}
+
+@keyframes glitch{
+  2%,64%{
+    transform: translate(2px,0) skew(0deg);
+  }
+  4%,60%{
+    transform: translate(-2px,0) skew(0deg);
+  }
+  62%{
+    transform: translate(0,0) skew(5deg); 
+  }
+}
+
+div:before,
+div:after{
+  content: attr(title);
   position: absolute;
-
+  left: 0;
 }
 
-html, body {
-  font-family: 'Roboto Mono', monospace;
-  font-size: 16px;
-  overflow: hidden;
-
+div:before{
+  animation: glitchTop 1s linear infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
 }
 
-html {
-  box-sizing: border-box;
-  user-select: none;
+@keyframes glitchTop{
+  2%,64%{
+    transform: translate(2px,-2px);
+  }
+  4%,60%{
+    transform: translate(-2px,2px);
+  }
+  62%{
+    transform: translate(13px,-1px) skew(-13deg); 
+  }
 }
 
-body {
-  background-color: #000;
+div:after{
+  animation: glitchBotom 1.5s linear infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
 }
 
-      </style>
-     </head>
-  <body> 
-    <div class="container">
-  <div class="copy-container center-xy">
-    <p>
-      
-    </p>
-  </div>
-</div>
+@keyframes glitchBotom{
+  2%,64%{
+    transform: translate(-2px,0);
+  }
+  4%,60%{
+    transform: translate(-2px,0);
+  }
+  62%{
+    transform: translate(-22px,5px) skew(21deg); 
+  }
+}
 
-<img id="img" src="assets/back.png" width="1500px" height="800px">
+body p{ 
+ 
+  align-items: center;
+  justify-content: center;
+ 
+  color: #fff;
+  font-size: 20px;
+  font-family: 'lazydog';
+ 
+}
+			</style>
+      <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c9bd72d8bfd44517a37551d53e850aa0"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
 
-<script>
- document.getElementById('img').ondragstart = function() { return false; };
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script> 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"> </script> 
-  <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/SplitText.min.js"> </script> 
+<body>
+  <div title="404">404.</div>
+  <br><br><br><br><br>
+  
+ 
   </body>
 </html>

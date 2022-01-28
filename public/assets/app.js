@@ -20,6 +20,7 @@ const main = {
         if (data.status == 'success' && data.udata) {
           location.pathname.split('/channels/')[1] ? main.app.redirect(location.pathname, true) : main.app.redirect('/channels/@me', true)
         } else {
+          delete localStorage['token']
           location.href = '/login'
         }
       }
@@ -33,40 +34,51 @@ const main = {
     par: '',
     InitLoad: () => {
       return new Promise((f, a) => {
-        var src_map = ['servers.js', 'stickers.js', 'emoji.js', 'info.js', 'handler.js', 'channelLoad.js'];
+        var loadedArray = []
+        main.app.ws = new WebSocket('wss://'+location.hostname+'/app?v=1&uid='+JSON.parse(localStorage['udata']).uid)
+        var src_map = ['servers.js', 'stickers.js', 'emoji.js', 'info.js', 'handler.js', 'channelLoad.js', 'utils.js', 'ws.js', 'menu.js', 'message.js'];
         src_map.forEach((src) => {
+          var index = src_map.indexOf(src)
           var Src = src
           const Elem = document.createElement('script');
-          src = '/chunks/'+src
+          src = '/chunks/' + src
           Elem.setAttribute('src', src);
           try {
-            fetch(src).then(e => e.text()).then(e => {document.head.appendChild(Elem);f(true)}).catch(e => {flux.log('Loading Chunk '+src_map.indexOf(Src)+' Failed: '+src);f(false)})
+            fetch(src).then(e => e.text()).then(e => { document.head.appendChild(Elem); }).catch(e => { flux.log('Loading Chunk ' + src_map.indexOf(Src) + ' Failed: ' + src); f(false) })
+            Elem.onload = function() {
+              loadedArray.push(1)
+              if (loadedArray.length==src_map.length) f(true)
+            }
           } catch {
-            flux.log('Loading Chunk '+src_map.indexOf(Src)+' Failed: '+src)
+            flux.log('Loading Chunk ' + src_map.indexOf(Src) + ' Failed: ' + src)
             f(false)
           }
         })
       })
     },
     request: async (method, path, query) => {
-      var e = await fetch('/api/v' + window.TenoquOpts.apiVersion + '/' + method + '/' + path + query.map((e, i) => i == 0 ? `?${e[0]}=${e[1]}` : `&${e[0]}=${e[1]}`).join(''), { method: 'GET', headers: {'content-type': 'text/js','Authorization': localStorage['token']}})
-      if (e.status!==200) {worker.log('Channel Fetch Failed: ' + (path==''?undefined:path));return []}
+      var e = await fetch('/api/v' + window.TenoquOpts.apiVersion + '/' + method + '/' + path + query.map((e, i) => i == 0 ? `?${e[0]}=${e[1]}` : `&${e[0]}=${e[1]}`).join(''), { method: 'GET', headers: { 'content-type': 'text/js', 'Authorization': localStorage['token'] } })
+      if (e.status !== 200) { worker.log('Channel Fetch Failed: ' + (path == '' ? undefined : path)); return ['failed'] }
       return e.json()
     },
     plain: async (method, path, query) => {
-      var e = await fetch('/api/v' + window.TenoquOpts.apiVersion + '/' + method + '/' + path + query.map((e, i) => i == 0 ? `?${e[0]}=${e[1]}` : `&${e[0]}=${e[1]}`).join(''), { method: 'GET', headers: {'content-type': 'text/js','Authorization': localStorage['token']}})
-      if (e.status!==200) {worker.log('Channel Fetch Failed: ' + (path==''?undefined:path));return []}
+      var e = await fetch('/api/v' + window.TenoquOpts.apiVersion + '/' + method + '/' + path + query.map((e, i) => i == 0 ? `?${e[0]}=${e[1]}` : `&${e[0]}=${e[1]}`).join(''), { method: 'GET', headers: { 'content-type': 'text/js', 'Authorization': localStorage['token'] } })
+      if (e.status !== 200) { worker.log('Channel Fetch Failed: ' + (path == '' ? undefined : path)); return ['failed'] }
       return e.text()
     },
     Terminate: () => {
       setTimeout(() => {
-        try {console.error('Error: App Terminated')} catch(e) {}
+        try { console.error('Error: App Terminated') } catch (e) { }
       }, 3000)
       APP.remove();
       throw new Error('Tenoqu Load Status: Aborted')
     },
-    init: () => {
-      main.app.loScr(3000)
+    init: async () => {
+      main.app.loScr(4000)
+      var ChunksLoaded = await main.app.InitLoad()
+      if (ChunksLoaded !== true) {
+        main.app.Terminate();
+      }
       setTimeout(async () => {
         var guilds = document.createElement('div');
         var channels = document.createElement('div');
@@ -75,15 +87,51 @@ const main = {
         guilds.classList.add('guilds')
         channels.classList.add('channels')
         messageWrap.classList.add('message-wrapper')
-        messageWrap.insertAdjacentHTML('afterbegin', '<input type="file">')
+        //messageWrap.insertAdjacentHTML('afterbegin', '<input type="file">')
         members.classList.add('users')
         var channelsHead = document.createElement('div')
         channelsHead.classList.add('server-info')
         channelsHead.innerText = ''
+        var userInfo = document.createElement('div')
+        userInfo.classList.add('user-info')
         channels.insertAdjacentElement('afterbegin', channelsHead)
+        channels.insertAdjacentElement('beforeend', userInfo)
         var cList = document.createElement('div')
         cList.classList.add('clist')
         channels.insertAdjacentElement('beforeend', cList)
+        var inputForm = document.createElement('form')
+        inputForm.setAttribute('id', 'mess-form')
+        var inputTop = document.createElement('div')
+        inputTop.classList.add('input-top')
+        var iElem = document.createElement('i')
+        iElem.classList.add('fas')
+        iElem.classList.add('fa-plus')
+        iElem.setAttribute('onclick', "document.querySelector('input[type=file]').click()")
+        iElem.setAttribute('style', 'font-size: 20px;')
+        var fileInput = document.createElement('input')
+        fileInput.setAttribute('type', 'file')
+        fileInput.setAttribute('style', 'display: none;')
+        var iiInput = document.createElement('input')
+        iiInput.classList.add('ii')
+        iiInput.setAttribute('placeholder', 'Message #placeholder')
+        inputTop.insertAdjacentElement('afterbegin', iiInput)
+        inputTop.insertAdjacentElement('afterbegin', fileInput)
+        inputTop.insertAdjacentElement('afterbegin', iElem)
+        inputForm.insertAdjacentElement('beforeend', inputTop)
+        main.app.initMessage(inputForm)
+        messageWrap.insertAdjacentElement('beforeend', inputForm)
+        var messageDiv = document.createElement('div')
+        messageDiv.setAttribute('id', 'message-wrap')
+        messageWrap.insertAdjacentElement('afterbegin', messageDiv)
+        var channelInfo = document.createElement('div')
+        channelInfo.classList.add('channel-info')
+        var name = document.createElement('span')
+        name.classList.add('name')
+        var meta = document.createElement('span')
+        meta.classList.add('meta')
+        channelInfo.insertAdjacentElement('beforeend', name)
+        channelInfo.insertAdjacentElement('beforeend', meta)
+        messageWrap.insertAdjacentElement('afterbegin', channelInfo)
         APP.insertAdjacentElement('beforeend', guilds)
         APP.insertAdjacentElement('beforeend', channels)
         APP.insertAdjacentElement('beforeend', messageWrap)
@@ -104,21 +152,18 @@ const main = {
         var mainSAdd = document.createElement('div')
         serverAdd.appendChild(mainSAdd)
         document.body.appendChild(serverAdd)
-        document.querySelectorAll('img').forEach(e => {e.ondragstart = function() { return false; }}); 
+        document.querySelectorAll('img').forEach(e => { e.ondragstart = function() { return false; } });
         main.app.loadChannel();
-      }, 1000)
+      }, 200)
     },
     redirect: (page, load) => {
+      if (!page.startsWith('/')) page = '/'+page
       history.pushState({ page: 'Chat' }, "Chat", window.location.origin + page)
-      router.log('Timestamp: ['+new Date().getTime()+']'+' Transferring to ' + page)
+      router.log('Timestamp: [' + new Date().getTime() + ']' + ' Transferring to ' + page)
       if (load) return main.app.init();
       window.dispatchEvent(new CustomEvent("pushState", { 'detail': page }))
     },
     loScr: async (time) => {
-      var ChunksLoaded = await main.app.InitLoad()
-      if (ChunksLoaded!==true) {
-        main.app.Terminate();
-      }
       var loading_over = document.createElement('div')
       loading_over.setAttribute('style', 'transform: scale(0);transition: all 0.5s ease;width: 200vw;height:200vw;position:absolute;display:flex;align-items:center;justify-content:center;color:white;user-select: none;')
       loading_over.classList.add('before-loading')
@@ -147,7 +192,7 @@ const main = {
       }
       r2 = '/loading-gifs/' + imgarray[r2]
       document.querySelector('.load-icon').src = r2
-      var factsArray = ["This is... A clone... of Discord!", "made by god", "pls no sue discord", "Tenoqu >>>", "GreenWorld is the best :D", "ur mom hehe", "Nebula is cool", "TN ride or die"]
+      var factsArray = ["Our Mascot's name is Mellow!", "made by god?", "don't sue us", "Tenoqu >>>", "i'm confused", "ur mom hehe", "Nebula is cool", "SmallHost Is cool"]
       document.querySelector('.fun-fact').innerText = factsArray[Math.round(Math.random() * (factsArray.length - 1))]
       setTimeout(() => {
         document.querySelector('.before-loading').style.transform = 'scale(1)'
@@ -162,7 +207,6 @@ const main = {
 
 window.scrollY = '0'
 
-
 //onload = main.app.init
 
 function scrollSmoothToBottom() {
@@ -173,7 +217,7 @@ function scrollSmoothToBottom() {
 }
 
 window.addEventListener('pushState', (e) => {
-  main.app.loadChannel(e.detail)
+  //main.app.loadChannel(e.detail)
 })
 
 window.onload = function() {/*if(location.pathname.startsWith('/app')) {main.load.login()} else if (location.pathname.startsWith('/channels/')) main.load.go();*/main.load.login() }
@@ -218,7 +262,7 @@ function code() {
 function urlify(text) {
   var urlRegex = /(https?:\/\/[^\s]+)/g;
   return text.replace(urlRegex, function(url) {
-    return '<a target="_blank" href="' + url + '">' + url + '</a>';
+    return '<a target="_blank" class="messageLink" href="' + url + '">' + url + '</a>';
   })
 }
 

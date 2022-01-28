@@ -7,6 +7,11 @@ Backend by @EnderKingJ#0001
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
+@font-face {
+  src: url("/assets/monopol.ttf");
+  font-family: "Monopol";
+}
+
 /* cyrillic-ext */
 @font-face {
   font-family: 'Open Sans 2';
@@ -91,7 +96,11 @@ Backend by @EnderKingJ#0001
 body {
   margin: 0;
   background: rgb(228, 223, 199);
-  font-family: "Open Sans", sans-serif;
+  font-family: "Monopol", sans-serif;
+}
+
+* {
+  font-family: "Monopol", sans-serif;
 }
 
 #app {
@@ -262,6 +271,7 @@ body {
 
 .channels {
   float: left;
+  font-family: "Open Sans", sans-serif;
   width: 240px;
   height: 100vh;
   display: flex;
@@ -273,10 +283,11 @@ body {
 .server-info {
   flex: none;
   height: 50px;
-  padding: 0px 16px;
+  padding: 0 0 0 16px;
   font-weight: 600;
+  letter-spacing: 1px;
   font-size: 15px;
-  width: calc(240px - 32px);
+  width: calc(240px - 16px);
   line-height: 50px;
   background: #F0DDBC;
   overflow: hidden;
@@ -318,6 +329,7 @@ body {
   float: left;
   width: calc(100vw - 512px);
   height: 100vh;
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   background: #F8F4E1;
@@ -332,7 +344,8 @@ body {
 
 #message-wrap {
   height: calc(100% - 140px);
-  background: #36393f;
+  background: #F8F4E1;
+  position: relative;
   width: 100%;
   overflow: auto;
   z-index: 9999;
@@ -342,17 +355,18 @@ body {
 }
 
 #mess-form {
-  height: 60px;
+  height: 52px;
   width: 100%;
-  background: #36393f;
   display: flex;
   align-items: center;
-  margin: 0 10px;
+  z-index: 599999999;
+  padding: 0 10px 10px;
+  margin-top: auto;
   justify-content: center;
 }
 
 .input-top {
-  background: rgb(255, 255, 255, 0.05);
+  background: #e4c9a5;
   width: 97%;
   display: flex;
   align-items: center;
@@ -362,8 +376,9 @@ body {
 }
 
 #mess-form input:not(input[type=file])::placeholder {
-  color: #a0a0a0;
+  color: #282828;
   font-weight: 0;
+  opacity: 0.8;
   font-size: 16px;
 }
 
@@ -373,14 +388,14 @@ body {
   outline: none;
   background: transparent;
   border: none;
-  color: #fefefe;
+  color: #242424;
   height: 30px;
   font-size: 17px;
   display: inline-block;
 }
 
 .fa-plus {
-  background: #898989;
+  background: #CA965C;
   border-radius: 50%;
   width: 25px;
   height: 25px;
@@ -396,14 +411,15 @@ body {
 .message {
   display: block;
   color: white;
-  font-size: 40px;
+  font-size: 47px;
 }
 
 .channel-info {
   height: 50px;
-  border-bottom: 2px solid #0000002e;
+  border-bottom: 3px solid #0002;
   width: 100%;
   padding-left: 10px;
+  background: #F0DDBC;
   display: flex;
   align-items: center;
 }
@@ -421,23 +437,23 @@ body {
 
 /*MESSAGES*/
 
-.aut {font-family:"Open Sans 2", sans-serif;font-size:15px;margin-top:1px;width: 447px;}
+.aut {font-family:"Open Sans 2", sans-serif;font-size:15px;margin-top:1px;width: 447px;height:5px;}
 
-.mess-cont {float:left;width:max-content;margin-left: 14px;display:flex;color:white;}
+.mess-cont {float:left;width:max-content;margin-left: 14px;display:flex;color:#222222;height:5px;}
 
-.message {display:flex;position:relative;left:-20px;width:calc(100% + 20px);padding:5px 0 0px 20px;}
+.message {display:flex;position:relative;left:-20px;width:calc(100% + 20px);padding:7px 0 7px 20px;transition:0.1s ease;}
 
-.message div:first-of-type {float:left;height: 50px;}
+.message div:first-of-type {float:left;height: 36px;}
 
 .message div:first-of-type img {width:36px;height:36px;border-radius:50%;}
 
 .date-m {margin-left:7px;font-size:10px;color:grey;font-family:"Open Sans", sans-serif;}
 
-.user-message {display:block;font-size:15px;position:relative;left:-447px;top:23px;word-wrap:break-word;width: calc(100vw - 562px);}
+.user-message {display:block;font-size:15px;position:relative;left:-447px;top:23px;word-wrap:break-word;width: calc(100vw - 600px);color:#3e3e3e}
 
-.amessage {margin-bottom:40px;}
+.amessage {margin-bottom:23px;width:1px;}
 
-.message:hover {background:#2f3238;}
+.message:hover {background:#fbe9c9;}
 
 /*Loading Screen*/
 
@@ -446,7 +462,7 @@ body {
 }
 
 .before-loading {
-  z-index: 99999999999999999999999;
+  z-index: 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
   height: 300vw;
   width: 300vw;
   background: rgb(228, 223, 199);
@@ -534,16 +550,18 @@ body {
 }
 
 .category {
-  
+  /**/
+  color:;
 }
 
 .category-name {
-  color: white;
+  color: #373737;
   font-size: 15px;
   font-weight: bold;
   display: block;
   margin-left: 9px;
-  margin-bottom:5px;
+  text-transform: uppercase;
+  margin-bottom:3px;
 }
 
 .caels {
@@ -554,8 +572,9 @@ body {
 
 .channel {
   margin: 0 7px;
+  letter-spacing: initial;
   color: #1c1c1c;
-  font-size: 16px;
+  font-size: 17px;
   display: block;
   user-select: none;
   padding: 3px;
@@ -892,4 +911,148 @@ input[type=submit]:hover, .submit-btnn:hover {
 d:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+/* Skeleton Loading System*/
+
+.description .line{
+  background: #d9d9d9;
+  border-radius: 10px;
+  height: 13px;
+  margin: 10px 0;
+  overflow: hidden;
+  position: relative;
+}
+.description .line-1{
+  width: calc(100% - 15%);
+}
+.description .line-3{
+  width: calc(100% - 40%);
+}
+.card .btns{
+  display: flex;
+}
+.card .btns .btn{
+  height: 45px;
+  width: 100%;
+  background: #d9d9d9;
+  border-radius: 25px;
+  position: relative;
+  overflow: hidden;
+}
+.btns .btn-1{
+  margin-right: 8px;
+}
+.btns .btn-2{
+  margin-left: 8px;
+}
+.header .img::before,
+.details span::before,
+.description .line::before,
+.btns .btn::before{
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(to right, #d9d9d9 0%, rgba(0,0,0,0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
+  background-repeat: no-repeat;
+  background-size: 450px 400px;
+  animation: shimmer 1s linear infinite;
+}
+.header .img::before{
+  background-size: 650px 600px;
+}
+.details span::before{
+  animation-delay: 0.2s;
+}
+.btns .btn-2::before{
+  animation-delay: 0.22s;
+}
+@keyframes shimmer {
+  0%{
+    background-position: -450px 0;
+  }
+  100%{
+    background-position: 450px 0;
+  }
+}
+
+.cover {
+  height: 270px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    hsl(210, 15%, 88%),
+    hsl(210, 15%, 95%),
+    hsl(210, 15%, 88%)
+  );
+  background-size: 200%;
+  animation: loader 1s infinite reverse;
+}
+
+.failed {
+  height: 35px;
+  width: 100%;
+  background: red;
+  margin: auto;
+  position: absolute;
+  z-index: 29999;
+  bottom: 52px;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  left: 0;
+  right: 0;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.failedMessage {
+  float: left;
+  margin-left: 10px;
+}
+
+.failedTryAgain {
+  float: right;
+  margin-right: 10px;
+}
+
+.failedTryAgain, .failedMessage {
+  height: 25px;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  user-select: none;
+}
+
+/*Context Menu*/
+
+#ctxmenu {
+  position: fixed;
+  background:ghostwhite;
+  color: black;
+  cursor: pointer;
+  border: 1px black solid;
+  z-index: 99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
+  user-select: none;
+}
+
+#ctxmenu > p {
+  padding: 0 1rem;
+  margin: 0
+}
+
+#ctxmenu > p:hover {
+  background: black;
+  color: ghostwhite
+}
+
+/* Client-sided Message Sending */
+
+.loadingsend .user-message {
+  color: #00000069;
 }

@@ -1,1 +1,99 @@
-{"928375302938":{"name":"Tenoqu Official Community","roles":[],"icon":"https://cdn.tenoqu.xyz/servericons/928375302938/8be52e156c5346ed9e732a2076dbac1f.svg","display":"923819593442","channels":["923819593442"]},"399939948839":{"name":"ayce's amazing party","roles":[],"icon":"https://tenoqu.xyz/loading-gifs/eoooo.gif","display":"993830099200","channels":{}},"699015142369":{"name":"amogus","roles":[],"icon":"//cdn.tenoqu.xyz/servericons/699015142369/d23748d654694bcf98d6174300084a79.png","display":"923819593442","channels":{}},"884679348409":{"name":"amogus","roles":[],"icon":"//cdn.tenoqu.xyz/servericons/884679348409/3573a80d337a47c9a0fd4a88ddb94275.png","display":"923819593442","channels":{}},"910378869433":{"name":"amogus","roles":[],"icon":"//cdn.tenoqu.xyz/servericons/910378869433/0c7434e4622c41b7b57346ba7e310387.png","display":"80808080","channels":{}},"934675471054":{"name":"amogus","roles":[],"icon":"//cdn.tenoqu.xyz/servericons/934675471054/eb42bc327bbd4346acb3aa40c5583810.png","display":"80808080","channels":{}},"270327794341":{"name":"amogus","roles":[],"icon":"//cdn.tenoqu.xyz/servericons/270327794341/2ec135f689fd48a3a5478e9db03d9dd8.png","display":"80808080","channels":{}},"234989763869":{"name":"amogus","roles":[],"icon":"//cdn.tenoqu.xyz/servericons/234989763869/3cc86b187a254a7d9e9b6e312a4f56ac.png","display":"80808080","channels":{}},"806847091541":{"name":"amogus","roles":[],"icon":"//cdn.tenoqu.xyz/servericons/806847091541/ea01481df4ec43b9b39f2d387ededa68.png","display":"80808080","channels":{}},"508847586127":{"name":"amogus","roles":[],"icon":"//cdn.tenoqu.xyz/servericons/508847586127/40a696a050504aceb9cf636ba93c2116.png","display":"80808080","channels":{}},"138593287809":{"name":"amogus","roles":[],"icon":"//cdn.tenoqu.xyz/servericons/138593287809/8c1f5aa2cd4943f688926e5fbafa966c.png","display":"80808080","channels":{}}}
+{
+  "928375302938": {
+    "name": "Tenoqu Official Community",
+    "roles": [],
+    "icon": "https://cdn.tenoqu.xyz/servericons/928375302938/8be52e156c5346ed9e732a2076dbac1f.svg",
+    "display": "923819593442",
+    "channels": [
+      "923819593442",
+      "214135977738",
+      "458763489793",
+      "453834276348",
+      "743657896346"
+    ],
+    "categories": [
+      "938248374029",
+      "345789234435"
+    ]
+  },
+  "399939948839": {
+    "name": "ayce's amazing party",
+    "roles": [],
+    "icon": "https://tenoqu.xyz/loading-gifs/eoooo.gif",
+    "display": "993830099200",
+    "channels": {},
+    "categories": []
+  },
+  "699015142369": {
+    "name": "amogus",
+    "roles": [],
+    "icon": "//cdn.tenoqu.xyz/servericons/699015142369/d23748d654694bcf98d6174300084a79.png",
+    "display": "923819593442",
+    "channels": {},
+    "categories": []
+  },
+  "884679348409": {
+    "name": "amogus",
+    "roles": [],
+    "icon": "//cdn.tenoqu.xyz/servericons/884679348409/3573a80d337a47c9a0fd4a88ddb94275.png",
+    "display": "923819593442",
+    "channels": {},
+    "categories": []
+  },
+  "910378869433": {
+    "name": "amogus",
+    "roles": [],
+    "icon": "//cdn.tenoqu.xyz/servericons/910378869433/0c7434e4622c41b7b57346ba7e310387.png",
+    "display": "80808080",
+    "channels": {},
+    "categories": []
+  },
+  "934675471054": {
+    "name": "amogus",
+    "roles": [],
+    "icon": "//cdn.tenoqu.xyz/servericons/934675471054/eb42bc327bbd4346acb3aa40c5583810.png",
+    "display": "80808080",
+    "channels": {},
+    "categories": []
+  },
+  "270327794341": {
+    "name": "amogus",
+    "roles": [],
+    "icon": "//cdn.tenoqu.xyz/servericons/270327794341/2ec135f689fd48a3a5478e9db03d9dd8.png",
+    "display": "80808080",
+    "channels": {},
+    "categories": []
+  },
+  "234989763869": {
+    "name": "amogus",
+    "roles": [],
+    "icon": "//cdn.tenoqu.xyz/servericons/234989763869/3cc86b187a254a7d9e9b6e312a4f56ac.png",
+    "display": "80808080",
+    "channels": {},
+    "categories": []
+  },
+  "806847091541": {
+    "name": "amogus",
+    "roles": [],
+    "icon": "//cdn.tenoqu.xyz/servericons/806847091541/ea01481df4ec43b9b39f2d387ededa68.png",
+    "display": "80808080",
+    "channels": {},
+    "categories": []
+  },
+  "508847586127": {
+    "name": "amogus",
+    "roles": [],
+    "icon": "//cdn.tenoqu.xyz/servericons/508847586127/40a696a050504aceb9cf636ba93c2116.png",
+    "display": "80808080",
+    "channels": {},
+    "categories": []
+  },
+  "138593287809": {
+    "name": "amogus",
+    "roles": [],
+    "icon": "//cdn.tenoqu.xyz/servericons/138593287809/8c1f5aa2cd4943f688926e5fbafa966c.png",
+    "display": "80808080",
+    "channels": {},
+    "categories": []
+  }
+}
