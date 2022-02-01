@@ -1,8 +1,9 @@
 /* 
-CSS For Messaging app
-Copyright 2022 Tenoqu Co. 
+assets/index.css
+Copyright 2022 Tenoqu  Inc.
 Front-End by @GreenWorld#0001 & @EnderKingJ#0001
 Backend by @EnderKingJ#0001
+This website and it's function is completely closed source. Please do not attempt to release it's source.
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
@@ -443,7 +444,7 @@ body {
 
 .message {display:flex;position:relative;left:-20px;width:calc(100% + 20px);padding:7px 0 7px 20px;transition:0.1s ease;}
 
-.message div:first-of-type {float:left;height: 36px;}
+.message div:first-of-type {float:left;height: 52px;}
 
 .message div:first-of-type img {width:36px;height:36px;border-radius:50%;}
 
@@ -467,11 +468,15 @@ body {
   width: 300vw;
   background: rgb(228, 223, 199);
   border-radius: 100%;
+    user-select: none;
+
 }
 
 .before-loading div * {
   display: block;
   margin: auto;
+    user-select: none;
+
 }
 
 .before-loading div {
@@ -491,6 +496,8 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+    user-select: none;
+
 }
 
 .add-server div:first-of-type {
@@ -521,6 +528,8 @@ body {
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.3);
   transition: 0.2s;
+    user-select: none;
+
 }
 
 .create-server:hover {
@@ -539,6 +548,8 @@ body {
   letter-spacing: 1px;
   text-transform: uppercase;
   font-family: "Anton", sans-serif;
+    user-select: none;
+
 }
 
 /* Channels */
@@ -547,6 +558,8 @@ body {
   height: calc(100% - 59px);
   width: 100%;
   padding-top: 7px;
+    user-select: none;
+
 }
 
 .category {
@@ -583,6 +596,7 @@ body {
   border-radius: 6px;
   content: "# ";
   transition: 0.2s;
+  
 }
 
 .channelselected {
@@ -1055,4 +1069,16 @@ d:hover {
 
 .loadingsend .user-message {
   color: #00000069;
+}
+
+/* Voice Chat */
+
+.voice_wrapper {
+  height: 100%;
+  width: calc(100vw - 512px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: none;
+  outline: none;
 }

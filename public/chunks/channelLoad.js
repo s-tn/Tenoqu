@@ -1,3 +1,8 @@
+// chunks 
+// Copyright 2022 Tenoqu  Inc.
+// Front-end by GreenWorld#0001 
+// Back-end by EnderKingJ#0001 
+// This website and it's function is completely closed source. Please do not attempt to release it's source.
 main.app.loadChannel = async () => {
   if (document.querySelector('.failed')) document.querySelector('.failed').remove()
   var type = 'public'
@@ -79,9 +84,9 @@ main.app.loadChannels = async server => {
       channel.setAttribute('data-direction', v)
       channel.setAttribute('data-category', a.category)
       channel.onclick = main.app.handleChannel(channel, a)
-      channel.innerText = '#' + a.name;
+      channel.innerText = '' + a.name;
       try { document.querySelector(`.cat[data-catid="${a.category}"]`).insertAdjacentElement('beforeend', channel) } catch { document.querySelector('.clist').insertAdjacentElement('afterbegin', channel) }
-      if (location.pathname.split('/').splice(3, 1)==v) {channel.click()}
+      if (location.pathname.split('/').splice(3, 1)==v) {main.app.Skeleton();channel.click()}
     })
     setTimeout(() => e('done'), 40)
   })

@@ -1,8 +1,9 @@
 /* 
-CSS For Messaging app
-Copyright 2022 Tenoqu Co. 
+assets/app.css
+Copyright 2022 Tenoqu  Inc.
 Front-End by @GreenWorld#0001 & @EnderKingJ#0001
 Backend by @EnderKingJ#0001
+This website and it's function is completely closed source. Please do not attempt to release it's source.
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
@@ -10,10 +11,12 @@ Backend by @EnderKingJ#0001
 body {
   margin: 0;
   background: #323232;
-  //font-family: "Open Sans", sans-serif;
+  
 }
 
 #app {
   width: 100%;
   height: 100vh;
 }
+
+

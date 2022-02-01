@@ -1,6 +1,6 @@
 <!--
 
-Page: App Login Page
+Page: App Join Page
 Copyright 2022 Tenoqu inc. 
 Front-End by @GreenWorld#0001 & @EnderKingJ#0001
 Backend by @EnderKingJ#0001
@@ -9,18 +9,145 @@ Backend by @EnderKingJ#0001
 
 <!DOCTYPE html>
 <html>
+  <head>
+    <!-- TenoquCSS -->
+    <link rel="stylesheet" href="/assets/login.css">
+    <link rel="stylesheet" href="/assets/signup.css">
+    <script src="/assets/join.js">
+    </script>
+    <!-- Title -->
+    <title>Tenoqu - Signup</title>
+    <!-- MISC -->
+    <link rel="icon" type="image/x-icon" href="https://cdn.tenoqu.xyz/servericons/928375302938/8be52e156c5346ed9e732a2076dbac1f.svg">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
 
-<head>
-	<script src="/assets/join.js">
-	</script>
-	<title>Tenoqu - Join</title>
-	<link rel="stylesheet" href="/assets/login.css">
-	<link rel="icon" type="image/x-icon" href="https://cdn.tenoqu.xyz/servericons/928375302938/8be52e156c5346ed9e732a2076dbac1f.svg">
-</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.js"></script>
 
-<body>
-	<div id="app"></div>
-  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c9bd72d8bfd44517a37551d53e850aa0"}'></script><!-- End Cloudflare Web Analytics -->
-</body>
+  </head>
+  <body><div id="container">
+    <div id="inviteContainer" style="padding:15px 30px;">
+        <div class="logoContainer"><img class="logo" src="https://cdn.tenoqu.xyz/servericons/928375302938/8be52e156c5346ed9e732a2076dbac1f.svg" /><img class="text" src="https://tenoqu.xyz/assets/Untitled.png" /></div>
+        <div class="acceptContainer" style="padding:15px 30px;">
+            <form id="AHH">
+                    <div class="formContainer"><div class="formDiv loadIn" style="transition-delay: 0.2s">
+                        <p>USERNAME <b> * </b></p><input id="name-input" placeholder="Mallow" type="text" required="">
+                    </div>
+                    <div class="formDiv loadIn" style="transition-delay: 0.2s">
+                        <p>EMAIL <b> * </b></p><input id="user-input" placeholder="mellow@tenoqu.com" type="email" required="">
+                    </div> 
+                    <div class="formDiv loadIn" style="transition-delay: 0.4s">
+                        <p>PASSWSORD <b> * </b> </p><input id="pass-input" placeholder="MellowIsCool!" type="password" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                      
+                    </div>
+                    <div class="formDiv loadIn codeinput" style="transition-delay: 0.2s">
+                        <p>INVITE CODE <b> * </b></p><input id="code-input" placeholder="000000" type="number" required="" min="000000" max="999999">
+                    </div> 
+                    <div class="formDiv loadIn" style="transition-delay: 0.6s"><button class="acceptBtn" type="submit">Register</button></div>
+                    
+                </div>
+            </form>
+            
+        </div>
+    </div>
+    <div class="box" id="fade-in">
+  <h3>Your password must have:</h3>
+  <ul>
+  <li id="letter" class="invalid">A lowercase letter</li>
+  <li id="capital" class="invalid">A capital letter</li>
+  <li id="number" class="invalid">A number</li>
+  <li id="length" class="invalid">Minimum <b>8 characters</b></li>
+</div>
+</div>
+    <script> // JQUERY
+$(function() {
+	
+	var images = [''];
 
+   $('#container').append('<style>#container, .acceptContainer:before, #logoContainer:before {background: url(' + images[Math.floor(Math.random() * images.length)] + ') center fixed }');
+	
+	
+	
+	
+	setTimeout(function() {
+		$('.logoContainer').transition({scale: 1}, 700, 'ease');
+		setTimeout(function() {
+			$('.logoContainer .logo').addClass('loadIn');
+			setTimeout(function() {
+				$('.logoContainer .text').addClass('loadIn');
+				setTimeout(function() {
+					$('.acceptContainer').transition({height: '431.5px'});
+					setTimeout(function() {
+						$('.acceptContainer').addClass('loadIn');
+						setTimeout(function() {
+							$('.formDiv, form h1').addClass('loadIn');
+						}, 500)
+					}, 500)
+				}, 500)
+			}, 500)
+		}, 1000)
+	}, 10)
+});
+
+// Password Criteria BEGIN
+var myInput = document.getElementById("pass-input");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
+// When the user clicks on the password field, show the message box
+myInput.onfocus = function() {
+  $('#fade-in').toggleClass('show');
+}
+
+// When the user clicks outside of the password field, hide the message box
+myInput.onblur = function() {
+   $('#fade-in').toggleClass('show');
+}
+
+// When the user starts to type something inside the password field
+myInput.onkeyup = function() {
+  // Validate lowercase letters
+  var lowerCaseLetters = /[a-z]/g;
+  if(myInput.value.match(lowerCaseLetters)) {  
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+  }
+  
+  // Validate capital letters
+  var upperCaseLetters = /[A-Z]/g;
+  if(myInput.value.match(upperCaseLetters)) {  
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
+
+  // Validate numbers
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {  
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
+  
+  // Validate length
+  if(myInput.value.length >= 8) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c9bd72d8bfd44517a37551d53e850aa0"}'></script><!-- End Cloudflare Web Analytics -->
+  </body>
 </html>

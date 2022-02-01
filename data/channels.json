@@ -1,21 +1,36 @@
 {
   "923819593442": {
-    "name": " • general",
-    "category": "938248374029"
+    "name": " ♯ general",
+    "category": "938248374029",
+    "type": "text"
+  },
+  "437654089685": {
+    "name": "☎ general",
+    "category": "938248374029",
+    "type": "voice",
+    "footprint": "9455d28f-24fa-433c-b98e-b5c4fc55ec3f"
   },
   "214135977738": {
-    "name": " • off-topic",
-    "category": "938248374029"
+    "name": " ♯ off-topic",
+    "category": "938248374029",
+    "type": "text"
   },
   "458763489793": {
-    "name": " • announcements",
-    "category": "345789234435"
+    "name": " ♯ announcements",
+    "category": "345789234435",
+    "type": "text"
   },
   "453834276348": {
-    "name": " • rules",
-    "category": "345789234435"
+    "name": " ♯ rules",
+    "category": "345789234435",
+    "type": "text"
   },
   "743657896346": {
-    "name": " • welcome"
+    "name": " ♯ welcome",
+    "type": "text"
+  },
+  "995888844488": {
+    "name": "♯ General",
+    "type": "text"
   }
 }

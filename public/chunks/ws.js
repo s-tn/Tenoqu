@@ -1,6 +1,11 @@
+// chunks 
+// Copyright 2022 Tenoqu  Inc.
+// Front-end by GreenWorld#0001 
+// Back-end by EnderKingJ#0001 
+// This website and it's function is completely closed source. Please do not attempt to release it's source.
 main.app.ws.onmessage = function(e) {
   var message = JSON.parse(e.data)
-  if (message.type=='message' && location.pathname.split('/').splice(3, 1)[0]==message.channel[0]) {
+  if (message.type == 'message' && location.pathname.split('/').splice(3, 1)[0] == message.channel[0]) {
     var e = message.data
     var message = CreateMessage(e)
     /*var message = document.createElement('div')
@@ -35,7 +40,8 @@ main.app.ws.onmessage = function(e) {
     document.querySelector('#message-wrap').insertAdjacentHTML('beforeend', message.outerHTML)
     if (scroll) ScrollBottom(document.querySelector('#message-wrap'))
   }
-  if (message.type=='messagedone') {
+  if (message.type == 'messagedone') {
     document.querySelector(`.message[id="${message.id.toString()}"]`).classList.remove('loadingsend')
+    main.AwaitingMessages.splice(main.AwaitingMessages.indexOf(message.id), 1)
   }
 }

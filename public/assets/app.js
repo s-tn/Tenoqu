@@ -1,3 +1,8 @@
+// assets/app.js 
+// Copyright 2022 Tenoqu  Inc.
+// Front-end by GreenWorld#0001 
+// Back-end by EnderKingJ#0001 
+// This website and it's function is completely closed source. Please do not attempt to release it's source.
 if (!localStorage['token']) location.href = '/login'
 
 const APP = document.querySelector('#app')
@@ -36,7 +41,7 @@ const main = {
       return new Promise((f, a) => {
         var loadedArray = []
         main.app.ws = new WebSocket('wss://'+location.hostname+'/app?v=1&uid='+JSON.parse(localStorage['udata']).uid)
-        var src_map = ['servers.js', 'stickers.js', 'emoji.js', 'info.js', 'handler.js', 'channelLoad.js', 'utils.js', 'ws.js', 'menu.js', 'message.js'];
+        var src_map = ['servers.js', 'stickers.js', 'emoji.js', 'info.js', 'handler.js', 'channelLoad.js', 'utils.js', 'ws.js', 'menu.js', 'message.js', 'rtc.js'];
         src_map.forEach((src) => {
           var index = src_map.indexOf(src)
           var Src = src

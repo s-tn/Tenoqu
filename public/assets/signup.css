@@ -1,10 +1,9 @@
 /* 
-
-CSS for App Login Page
-Copyright 2022 Tenoqu Co. 
+assets/signup.css
+Copyright 2022 Tenoqu  Inc.
 Front-End by @GreenWorld#0001 & @EnderKingJ#0001
 Backend by @EnderKingJ#0001
-
+This website and it's function is completely closed source. Please do not attempt to release it's source.
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
@@ -155,5 +154,66 @@ input[type=submit]:hover {
 }
 
 a {
-  color: #E3CDC1;
+  color: rgb(204, 176, 161);
 }
+ 
+.box {
+  font-family: 'Montserrat' !important;
+color: #A0937D;
+  padding: 20px;
+  
+  
+  background: rgba(89, 85, 82);
+
+	 overflow: hidden;
+	 position: relative;
+	 border-radius: 0px;
+}
+
+#fade-in {
+ height: 420px;
+  width: 0px;
+  opacity: -4;
+  font-size:0px;
+  transition: all .7s ease;
+ 
+}
+
+#fade-in.show {
+  opacity: 1;
+ height: 420px;
+  width: 346px;
+  font-size: 18px;
+}
+
+#message p {
+  padding: 10px 35px;
+  font-size: 18px;
+  font-family: 'Montserrat' !important;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+ul .valid {
+  color: rgb(150, 255, 150);
+}
+
+ul .valid:before {
+  position: relative;
+  left: -35px;
+  
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+ul .invalid {
+  color: rgb(255, 117, 117);
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  
+}
+p b {
+  color: rgb(155, 0, 0);
+}
+

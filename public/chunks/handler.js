@@ -1,3 +1,8 @@
+// chunks 
+// Copyright 2022 Tenoqu  Inc.
+// Front-end by GreenWorld#0001 
+// Back-end by EnderKingJ#0001 
+// This website and it's function is completely closed source. Please do not attempt to release it's source.
 main.app.handleServer = function(server, data) {
   return function(event) {
     var url = server.getAttribute('data-predir')
@@ -25,6 +30,7 @@ main.app.handleChannel = function(channel, data) {
     document.querySelectorAll('.channelselected').forEach(e => e.classList.remove('channelselected'))
     channel.classList.add('channelselected')
     document.querySelector('.ii').setAttribute('placeholder', 'Message '+channel.innerText)
+    if (data.type=='voice') return main.app.LoadVoiceChannel();
     if (originalPath==channel.getAttribute('data-direction')) return main.app.loadChannel(channel, data, event, path)
     main.app.Skeleton()
     main.app.loadChannel(channel, data, event, path)

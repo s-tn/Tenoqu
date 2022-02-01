@@ -4,12 +4,13 @@
 	<title>Tenoqu</title>
   <meta name="description" content="Tenoqu: The Cozy, Free, Easy-to-use, Developer-Friendly Chatting App!">
   <meta name="theme-color" content="#e6c59c">
+  <link rel="stylesheet" href="/style.css" /> 
   <meta name="og:image" content="https://cdn.tenoqu.xyz/servericons/928375302938/8be52e156c5346ed9e732a2076dbac1f.svg">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 	<link rel="stylesheet" href="/assets/app.css">
 	<link rel="stylesheet" href="/assets/index.css">
 	<link rel="icon" type="image/x-icon" href="https://cdn.tenoqu.xyz/servericons/928375302938/8be52e156c5346ed9e732a2076dbac1f.svg">
-</head>
+</head> 
 
 <body>
 	<div id="app"></div>
@@ -17,9 +18,13 @@
 		window.TenoquOpts = {
         apiVersion: '1',
         deliveryAddress: '//cdn.tenoqu.xyz',
-        hostAddress: '//tenoqu.xyz'
+        hostAddress: '//tenoqu.xyz',
+        voiceAddress: '//remote-rtc.tenoqu.xyz'
       }
 	</script>
+  <script src="https://remote-rtc.tenoqu.xyz/socket.io/socket.io.js"></script>
+  <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+  <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
 	<script src="/assets/app.js">
 	</script>
 	<script src="/assets/LookSerClick.js">

@@ -34,9 +34,9 @@ Backend by @EnderKingJ#0001
 </head>
 
 <body>
-	<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+	<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true" >
 		<div class="modal-dialog">
-			<div class="modal-content">
+			<div class="modal-content" data-tilt data-tilt-full-page-listening data-tilt-scale="1" data-tilt-startX="-20" data-tilt-startY="20" data-tilt-glare data-tilt-max-glare="0.8">
 				<div class="modal-header">
 					<h4 class="modal-title" id="myModalLabel">Warning</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -50,6 +50,26 @@ Backend by @EnderKingJ#0001
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
         <a href="/login">
         <button href="/login" type="button" class="btn btn-primary">Continue to login</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+	<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true" >
+		<div class="modal-dialog">
+			<div class="modal-content" data-tilt data-tilt-full-page-listening data-tilt-scale="1" data-tilt-startX="-20" data-tilt-startY="20" data-tilt-glare data-tilt-max-glare="0.8">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">Warning</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h3>Tenoqu is in closed Alpha right now. </h3><p>&nbsp;&nbsp; This means that we are only allowing certain people to sign in and use the app right now, as the app is essentially a pre-alpha build. </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <a href="/join">
+        <button href="/join" type="button" class="btn btn-primary">Continue to signup</button></a>
       </div>
     </div>
   </div>
@@ -74,7 +94,7 @@ Backend by @EnderKingJ#0001
       <h1><b>Tenoqu</b></h1>
       <p>Since Tenoqu's development began, the point was to make the best chat application for developers. Made for developers, by developers (Duh, though)</p>
       <div class="demo" data-tilt data-tilt-full-page-listening data-tilt-scale="1" data-tilt-startX="-20" data-tilt-startY="20">
-      <button data-toggle="modal" data-target="#basicModal">Get Started</button>
+      <button data-toggle="modal" data-target="#signupModal">Get Started</button>
       </div>
     </div>
     

@@ -1,7 +1,13 @@
+// TenoquAPI 
+// Copyright 2022 Tenoqu  Inc.
+// Front-end by GreenWorld#0001 
+// Back-end by EnderKingJ#0001 
+// This website and it's function is completely closed source. Please do not attempt to release it's source.
 const Channel = require('./channel.js');
 const Party = require('./party.js');
 const Messages = require('./message.js');
 const Category = require('./category.js');
+const Icon = require('./icon.js');
 
 class TenoquApi {
   constructor(app) {
@@ -16,6 +22,9 @@ class TenoquApi {
         if (JSON.parse(require('fs').readFileSync('./accounts/data.json'))[new Buffer.from(req.headers['authorization'].split('.')[0], 'base64').toString('utf-8')].tokens.indexOf(req.headers['authorization'])==-1) return res.status(403).end({status: '401', message: 'Unauthorized'})
         if (Method == 'channels') {
           return Channel(req, res, app)
+        }
+        if (Method == 'icon') {
+          return Icon(req, res, app)
         }
         if (Method == 'parties') {
           return Party(req, res, app)

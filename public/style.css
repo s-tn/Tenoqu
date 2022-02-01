@@ -1,0 +1,200 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+:root {
+  --main-darklg: #1d2635;
+  --main-dark: #161d29;
+  --primary-color: #000000;
+  --main-light: #eeeeee;
+  font-family: "Poppins", sans-serif;
+} 
+
+*[data-vc="true"] {
+  margin: 0;
+  padding: 0;
+  max-height: calc(100vh - 213px);
+}
+
+.header[data-vc="true"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 8vh;
+  position: relative;
+  width: 100%;
+  background-color: #E7D4B5;
+  color: #010101;
+}
+
+.logo[data-vc="true"] > h3[data-vc="true"] {
+  color: #1e1e1e;
+}
+
+.main[data-vc="true"] {
+  overflow: hidden;
+  height: 92vh;
+  display: flex;
+}
+
+.main__left[data-vc="true"] {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.videos__group[data-vc="true"] {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: #F0DDBC;
+}
+
+.epicvideo {
+  height: 100px;
+  width: 100px;
+  background: black;
+  border-radius: 50%;
+  margin: 0.5rem;
+  object-fit: cover;
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+}
+
+.icon[data-vc="true"] {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.options[data-vc="true"] {
+  padding: 1rem;
+  display: flex;
+  background-color: #F0DDBC;
+}
+
+.options__left[data-vc="true"] {
+  display: flex;
+}
+
+.options__right[data-vc="true"] {
+  margin-left: auto;
+}
+
+.options__button[data-vc="true"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+  height: 50px;
+  border-radius: 5px;
+  color: var(--main-light);
+  font-size: 1.2rem;
+  width: 50px;
+  margin: 0 0.5rem;
+}
+
+.background__red[data-vc="true"] {
+  background-color: #f6484a;
+}
+
+.main__right[data-vc="true"] {
+  display: flex;
+  flex-direction: column;
+  flex: 0.3;
+  background-color: #242f41;
+}
+
+.main__chat_window[data-vc="true"] {
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+
+.main__chat_window::-webkit-scrollbar[data-vc="true"] {
+  display: none;
+}
+
+.main__message_container[data-vc="true"] {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main__message_container[data-vc="true"] > input[data-vc="true"] {
+  height: 50px;
+  flex: 1;
+  font-size: 1rem;
+  border-radius: 5px;
+  padding-left: 20px;
+  border: none;
+}
+
+.messages[data-vc="true"] {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem;
+}
+
+.message[data-vc="true"] {
+  display: flex;
+  flex-direction: column;
+}
+
+.message[data-vc="true"] > b[data-vc="true"] {
+  color: #eeeeee;
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+.message[data-vc="true"] > b[data-vc="true"] > i[data-vc="true"] {
+  margin-right: 0.7rem;
+  font-size: 1.5rem;
+}
+
+.message[data-vc="true"] > span[data-vc="true"] {
+  background-color: #eeeeee;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+#video-grid[data-vc="true"] {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#showChat[data-vc="true"] {
+  display: none;
+}
+
+.header__back[data-vc="true"] {
+  display: none;
+  position: absolute;
+  font-size: 1.3rem;
+  top: 17px;
+  left: 28px;
+  color: #fff;
+}
+
+@media (max-width: 700px) {
+  .main__right[data-vc="true"] {
+    display: none;
+  }
+  .main__left[data-vc="true"] {
+    width: 100%;
+    flex: 1;
+  }
+
+  .epicvideo {
+    height: auto;
+    width: 100%;
+  }
+
+  #showChat[data-vc="true"] {
+    display: flex;
+  }
+}
