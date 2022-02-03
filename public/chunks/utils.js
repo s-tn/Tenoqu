@@ -43,7 +43,17 @@ function CreateMessage(e) {
   aMessage.classList.add('amessage')
   var userMessage = document.createElement('span')
   userMessage.classList.add('user-message')
-  userMessage.innerHTML = e.content
+  var parser = new DOMParser();
+  var content = parser.parseFromString(e.content, 'text/html')
+  content.body.querySelectorAll('*').forEach(node => {
+    if (node.classList.contains('messageLink')&&node.tagName=='A'&&node.getAttribute('target')=='_blank'&&node.getAttribute('href')==node.innerText&&node.getAttribute('style')==null) {
+
+    } else {
+      content.body.innerHTML = content.body.innerHTML.replace(node.outerHTML, node.outerHTML.replace(/<\/([a-zA-Z0-9\-\s]+)/gmi, '<</span>/$1').replace(/<([a-zA-Z0-9\-\s]+)/gmi, '<<span>$1</span>'))
+    }
+  })
+  userMessage.innerText = content.body.innerHTML
+  userMessage.innerHTML = userMessage.innerText//urlify(userMessage.innerText)
   aMessage.appendChild(userMessage)
   var Aut = document.createElement('span')
   Aut.classList.add('aut')
@@ -78,9 +88,18 @@ setTimeout(() => {
       }
     })
   }
+  document.querySelector('.ii').onfocus = function() {document.querySelector('.ii').focused = true}
+  document.querySelector('.ii').onblur = function() {
+    document.querySelector('.ii').focused = undefined
+  }
   initDivMouseOver()
+  setInterval(()=>{console.log(document.querySelector('.ii').focused)},1000)
   document.querySelector('body').addEventListener('keyup', (e) => {
-    if (Over.classList.contains('users') || Over.classList.contains('guilds') || Over.classList.contains('message-wrapper') || Over.classList.contains('channels') && document.querySelector('.ii')) { }
+    if (Over.classList.contains('users') || Over.classList.contains('guilds') || Over.classList.contains('message-wrapper') || Over.classList.contains('channels') && document.querySelector('.ii') && document.querySelector('.ii')!==document.activeElement&&(document.querySelector('.ii').focused==undefined||document.querySelector('.ii').focused==false)) {
+      if (e.key=='Enter'||e.key=='Shift'||e.key=='Escape'||e.key=='Alt'||e.key=='OS'||e.key=='Control'||e.key=='CapsLock'||e.key=='Backspace') return 
+      if (document.querySelector('.ii').focused==false||document.querySelector('.ii').focused==undefined) document.querySelector('.ii').value += e.key
+      document.querySelector('.ii').focus()
+    }
   })
 }, 1000)
 
