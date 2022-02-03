@@ -4,8 +4,16 @@
       {
         "id": "47d386b3-ff1b-4ae0-8444-fee41276746b",
         "line": 1,
-        "version": 459,
-        "index": 1111
+        "version": 462,
+        "index": 1
+      }
+    ],
+    "lib/auth.js": [
+      {
+        "id": "dc36d00d-db22-4cd2-9a25-f911826cdfad",
+        "line": 24,
+        "version": 942,
+        "index": 785
       }
     ],
     "package.json": [
@@ -27,9 +35,9 @@
     "public/assets/index.css": [
       {
         "id": "de855b8c-75bb-47f4-8274-1ec3ee0d3286",
-        "line": 560,
-        "version": 2930,
-        "index": 11432
+        "line": 561,
+        "version": 2973,
+        "index": 11434
       }
     ],
     "public/assets/join.js": [

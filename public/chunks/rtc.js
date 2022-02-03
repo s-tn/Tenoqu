@@ -182,6 +182,7 @@ main.app.LoadVoiceChannel = async function() {
       var killButton = document.querySelector('#disconnect')
       killButton.addEventListener('click', () => {
         endCall()
+        document.querySelector(`.server-label[data-predir="/channels/${location.pathname.split('/').splice(2, 1)}"]`).click()
       })
     }, 1500)
   })(window, document, window)

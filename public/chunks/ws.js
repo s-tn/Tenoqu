@@ -3,6 +3,9 @@
 // Front-end by GreenWorld#0001 
 // Back-end by EnderKingJ#0001 
 // This website and it's function is completely closed source. Please do not attempt to release it's source.
+
+main.app.ws.currentInterval = 1
+
 main.app.ws.onmessage = function(e) {
   var message = JSON.parse(e.data)
   if (message.type == 'message' && location.pathname.split('/').splice(3, 1)[0] == message.channel[0]) {

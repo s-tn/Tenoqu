@@ -22,7 +22,7 @@ main.app.handleChannel = function(channel, data) {
     var originalPath = location.pathname.split('/').splice(3, 1)
     var a = JSON.parse(localStorage['serversStored'])
     a[location.pathname.split('/').splice(2, 1).toString()] = channel.getAttribute('data-direction')
-    localStorage['serversStored'] = JSON.stringify(a)
+    if (data.type!=='voice') localStorage['serversStored'] = JSON.stringify(a)
     var path = location.pathname.split('/').splice(0, 3)
     path.push(channel.getAttribute('data-direction'))
     path = path.join('/')
