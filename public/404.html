@@ -2,163 +2,182 @@
 <html>
 
 <head>
-  <title> There was an error. </title>  
-   <meta name="description" content="Tenoqu: The Cozy, Free, Easy-to-use, Developer-Friendly Chatting App!">
-  <meta name="theme-color" content="#e6c59c">
-  <meta name="og:image" content="https://cdn.tenoqu.xyz/servericons/928375302938/8be52e156c5346ed9e732a2076dbac1f.svg">
+	<title> There was an error. </title>
+	<meta name="description" content="Tenoqu: The Cozy, Free, Easy-to-use, Developer-Friendly Chatting App!">
+	<meta name="theme-color" content="#e6c59c">
+	<meta name="og:image" content="https://cdn.tenoqu.xyz/servericons/928375302938/8be52e156c5346ed9e732a2076dbac1f.svg">
 	<style>
-   @font-face {
-  src: url('/assets/lazy_dog.ttf');
-  font-family: 'lazydog';
-}
-*{
-  overflow: hidden;
-  user-select: none;
-}
-body{ 
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  background: #131313;
-  color: #fff;
-  font-size: 96px;
-  font-family: 'lazydog';
-  letter-spacing: -7px;
-  user-select: none;
-}
+		@font-face {
+			src: url('/assets/lazy_dog.ttf');
+			font-family: 'lazydog';
+		}
+
+		* {
+			overflow: hidden;
+			user-select: none;
+		}
+
+		body {
+			display: flex;
+			width: 100vw;
+			height: 100vh;
+			align-items: center;
+			justify-content: center;
+			margin: 0;
+			background: #131313;
+			color: #fff;
+			font-size: 96px;
+			font-family: 'lazydog';
+			letter-spacing: -7px;
+			user-select: none;
+		}
 
 
-div{
-  animation: glitch 1s linear infinite;
-}
+		div {
+			animation: glitch 1s linear infinite;
+		}
 
-@keyframes glitch{
-  2%,64%{
-    transform: translate(2px,0) skew(0deg);
-  }
-  4%,60%{
-    transform: translate(-2px,0) skew(0deg);
-  }
-  62%{
-    transform: translate(0,0) skew(5deg); 
-  }
-}
+		@keyframes glitch {
+			2%,
+			64% {
+				transform: translate(2px, 0) skew(0deg);
+			}
+			4%,
+			60% {
+				transform: translate(-2px, 0) skew(0deg);
+			}
+			62% {
+				transform: translate(0, 0) skew(5deg);
+			}
+		}
 
-div:before,
-div:after{
-  content: attr(title);
-  position: absolute;
-  left: 0;
-}
+		div:before,
+		div:after {
+			content: attr(title);
+			position: absolute;
+			left: 0;
+		}
 
-div:before{
-  animation: glitchTop 1s linear infinite;
-  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-}
+		div:before {
+			animation: glitchTop 1s linear infinite;
+			clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+			-webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+		}
 
-@keyframes glitchTop{
-  2%,64%{
-    transform: translate(2px,-2px);
-  }
-  4%,60%{
-    transform: translate(-2px,2px);
-  }
-  62%{
-    transform: translate(13px,-1px) skew(-13deg); 
-  }
-}
+		@keyframes glitchTop {
+			2%,
+			64% {
+				transform: translate(2px, -2px);
+			}
+			4%,
+			60% {
+				transform: translate(-2px, 2px);
+			}
+			62% {
+				transform: translate(13px, -1px) skew(-13deg);
+			}
+		}
 
-div:after{
-  animation: glitchBotom 1.5s linear infinite;
-  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-}
+		div:after {
+			animation: glitchBotom 1.5s linear infinite;
+			clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+			-webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+		}
 
-@keyframes glitchBotom{
-  2%,64%{
-    transform: translate(-2px,0);
-  }
-  4%,60%{
-    transform: translate(-2px,0);
-  }
-  62%{
-    transform: translate(-22px,5px) skew(21deg); 
-  }
-}
+		@keyframes glitchBotom {
+			2%,
+			64% {
+				transform: translate(-2px, 0);
+			}
+			4%,
+			60% {
+				transform: translate(-2px, 0);
+			}
+			62% {
+				transform: translate(-22px, 5px) skew(21deg);
+			}
+		}
 
-body p{ 
- 
-  align-items: center;
-  justify-content: center;
- 
-  color: #fff;
-  font-size: 20px;
-  font-family: 'lazydog';
- 
-}
+		body p {
 
-.ento {
-    -webkit-animation: mover 2s infinite  alternate;
-    animation: mover 2s infinite  alternate;
-}
+			align-items: center;
+			justify-content: center;
 
-div {
-}
-@-webkit-keyframes mover {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-20px); }
-}
-@keyframes mover {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-20px); }
-}
-marquee {
-  
-}
-@keyframes rainbow {
-    0%, 100% {
-        fill: red;
-    }
-    33% {
-        fill: blue;
-    }
-    66% {
-        fill: yellow;
-    }
-}
+			color: #fff;
+			font-size: 20px;
+			font-family: 'lazydog';
 
-html,
-body {
-    width: 100%;
-    height: 100%;
-    background: #222;
-}
+		}
 
-h1 {
-    animation: rainbow 60s linear infinite;
-}
-			</style>
-      <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c9bd72d8bfd44517a37551d53e850aa0"}'>
-      
-      
-      </script><!-- End Cloudflare Web Analytics -->
+		.ento {
+			-webkit-animation: mover 2s infinite alternate;
+			animation: mover 2s infinite alternate;
+		}
+
+		div {}
+
+		@-webkit-keyframes mover {
+			0% {
+				transform: translateY(0);
+			}
+			100% {
+				transform: translateY(-20px);
+			}
+		}
+
+		@keyframes mover {
+			0% {
+				transform: translateY(0);
+			}
+			100% {
+				transform: translateY(-20px);
+			}
+		}
+
+		marquee {}
+
+		@keyframes rainbow {
+			0%,
+			100% {
+				fill: red;
+			}
+			33% {
+				fill: blue;
+			}
+			66% {
+				fill: yellow;
+			}
+		}
+
+		html,
+		body {
+			width: 100%;
+			height: 100%;
+			background: #222;
+		}
+
+		h1 {
+			animation: rainbow 60s linear infinite;
+		}
+	</style>
+	<!-- Cloudflare Web Analytics -->
+	<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c9bd72d8bfd44517a37551d53e850aa0"}'>
+
+	</script><!-- End Cloudflare Web Analytics -->
 
 </head>
 
 <body>
-  <marquee behavior="alternate" direction="down" width="100%" height="100%">
-    <marquee behavior="alternate" direction="left" width="100%">
-     
-  <div class="ento">
-  <div title="404">404.</div>
-  </div>
+	<marquee behavior="alternate" direction="down" width="100%" height="100%">
+		<marquee behavior="alternate" direction="left" width="100%">
 
-     </marquee>
-</marquee>
- 
-  </body>
+			<div class="ento">
+				<div title="404">404.</div>
+			</div>
+
+		</marquee>
+	</marquee>
+
+</body>
+
 </html>

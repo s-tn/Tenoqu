@@ -11,7 +11,7 @@ const fs = require('fs')
 const Login = require('./lib/login')
 
 app.Token = require('./lib/token')
- 
+
 app.b64 = require('./lib/base')
 
 app.Login = Login(app)
@@ -26,8 +26,8 @@ const Api = new (require('./api/index'))(app)
 
 app.use((req, res, next) => {
   if (req.url.includes('.map')) return next()
-  if (req.url.includes('.js')) return res.writeHead(200, {'content-type': 'application/javascript'}).end(fs.readFileSync('./public'+req.url)+'//# sourceMappingURL='+req.url+'.map')
-  if (req.url.includes('.css')) return res.writeHead(200, {'content-type':'text/css'}).end(fs.readFileSync('./public'+req.url)+`/*# sourceMappingURL=${req.url}.map */`)
+  if (req.url.includes('.js')) return res.writeHead(200, { 'content-type': 'application/javascript' }).end(fs.readFileSync('./public' + req.url) + '//# sourceMappingURL=' + req.url + '.map')
+  if (req.url.includes('.css')) return res.writeHead(200, { 'content-type': 'text/css' }).end(fs.readFileSync('./public' + req.url) + `/*# sourceMappingURL=${req.url}.map */`)
   next()
 })
 
