@@ -278,7 +278,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   background: #F6E6CB;
-  overflow: auto;
+  overflow: hidden auto;
 }
 
 .server-info {
@@ -349,7 +349,8 @@ body {
   background: #F8F4E1;
   position: relative;
   width: 100%;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   z-index: 9999;
   overflow-anchor: none;
   padding: 4px 20px;

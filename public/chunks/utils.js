@@ -94,7 +94,6 @@ setTimeout(() => {
     document.querySelector('.ii').focused = undefined
   }
   initDivMouseOver()
-  setInterval(()=>{console.log(document.querySelector('.ii').focused)},1000)
   document.querySelector('body').addEventListener('keyup', (e) => {
     if (Over.classList.contains('users') || Over.classList.contains('guilds') || Over.classList.contains('message-wrapper') || Over.classList.contains('channels') && document.querySelector('.ii') && document.querySelector('.ii')!==document.activeElement&&(document.querySelector('.ii').focused==undefined||document.querySelector('.ii').focused==false)) {
       if (e.key=='Enter'||e.key=='Shift'||e.key=='Escape'||e.key=='Alt'||e.key=='OS'||e.key=='Control'||e.key=='CapsLock'||e.key=='Backspace') return 

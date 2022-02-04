@@ -4,6 +4,7 @@
 // Back-end by EnderKingJ#0001 
 // This website and it's function is completely closed source. Please do not attempt to release it's source.
 // Terms of Service: https://tenoqu.xyz/terms 
+
 if (!localStorage['token']) location.href = '/login'
 
 const APP = document.querySelector('#app')
@@ -42,6 +43,7 @@ const main = {
       return new Promise((f, a) => {
         var loadedArray = []
         main.app.ws = new WebSocket('wss://'+location.hostname+'/app?v=1&uid='+JSON.parse(localStorage['udata']).uid)
+        main.app.ws.url = 'wss://'+location.hostname+'/app?v=1&uid='+JSON.parse(localStorage['udata']).uid
         var src_map = ['servers.js', 'stickers.js', 'emoji.js', 'info.js', 'handler.js', 'channelLoad.js', 'utils.js', 'ws.js', 'menu.js', 'message.js', 'rtc.js', 'peer.min.js', 'fontAwesome.min.js'];
         src_map.forEach((src) => {
           var index = src_map.indexOf(src)
@@ -184,6 +186,10 @@ const main = {
       window.dispatchEvent(new CustomEvent("pushState", { 'detail': page }))
     },
     loScr: async (time) => {
+      if (main.app.restartTimes && main.app.restartTimes.active==true) {
+        document.querySelector('.before-loading').remove()
+        time = main.app.restartTimes.timings[main.app.restartTimes.current] + 1000
+      }
       var loading_over = document.createElement('div')
       loading_over.setAttribute('style', 'transform: scale(0);transition: all 0.5s ease;width: 200vw;height:200vw;position:absolute;display:flex;align-items:center;justify-content:center;color:white;user-select: none;')
       loading_over.classList.add('before-loading')
