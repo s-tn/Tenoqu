@@ -14,7 +14,7 @@ main.app.restartTimes = {
 function initWs() {
   flux.log('WebSocket Connecting: '+main.app.ws.url)
   flux.log('WebSocket Connection: '+main.app.ws.url)
-  if (arguments[0]) {
+  if (arguments[0]&&document.querySelector('.before-loading')) {
     worker.log('Logger has loaded')
     document.querySelector('.before-loading').style.transform = 'scale(0)'
     setTimeout(() => {
