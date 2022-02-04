@@ -44,7 +44,7 @@ const main = {
         var loadedArray = []
         main.app.ws = new WebSocket('wss://'+location.hostname+'/app?v=1&uid='+JSON.parse(localStorage['udata']).uid)
         main.app.ws.url = 'wss://'+location.hostname+'/app?v=1&uid='+JSON.parse(localStorage['udata']).uid
-        var src_map = ['servers.js', 'stickers.js', 'emoji.js', 'info.js', 'handler.js', 'channelLoad.js', 'utils.js', 'ws.js', 'menu.js', 'message.js', 'rtc.js', 'peer.min.js', 'fontAwesome.min.js'];
+        var src_map = ['servers.js', 'stickers.js', 'emoji.js', 'info.js', 'handler.js', 'channelLoad.js', 'utils.js', 'ws.js', 'menu.js', 'message.js', 'rtc.js', 'peer.min.js', 'fontAwesome.min.js', 'load.js'];
         src_map.forEach((src) => {
           var index = src_map.indexOf(src)
           var Src = src
@@ -176,6 +176,7 @@ const main = {
         document.body.appendChild(serverAdd)
         document.querySelectorAll('img').forEach(e => { e.ondragstart = function() { return false; } });
         main.app.loadChannel();
+        setTimeout(main.app.onload?main.app.onload:()=>{},100)
       }, 200)
     },
     redirect: (page, load) => {

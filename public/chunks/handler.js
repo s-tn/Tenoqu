@@ -3,6 +3,7 @@
 // Front-end by GreenWorld#0001 
 // Back-end by EnderKingJ#0001 
 // This website and it's function is completely closed source. Please do not attempt to release it's source.
+window.doneHomeFriendLink = false
 main.app.handleServer = function(server, data) {
   return function(event) {
     var url = server.getAttribute('data-predir')
@@ -36,3 +37,11 @@ main.app.handleChannel = function(channel, data) {
     main.app.loadChannel(channel, data, event, path)
   }
 }
+
+main.app.handleHome = function() {
+  return function(event) {
+    main.app.home.load()
+  }
+}
+
+main.app.onload = function() {if (window.doneHomeFriendLink==false) {document.querySelector('.home-label.server-init').addEventListener('click', main.app.handleHome());window.doneHomeFriendLink=true}}
