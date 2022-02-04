@@ -3,6 +3,7 @@
 // Front-end by GreenWorld#0001 
 // Back-end by EnderKingJ#0001 
 // This website and it's function is completely closed source. Please do not attempt to release it's source.
+// Terms of Service: https://tenoqu.xyz/terms 
 if (!localStorage['token']) location.href = '/login'
 
 const APP = document.querySelector('#app')
@@ -41,7 +42,7 @@ const main = {
       return new Promise((f, a) => {
         var loadedArray = []
         main.app.ws = new WebSocket('wss://'+location.hostname+'/app?v=1&uid='+JSON.parse(localStorage['udata']).uid)
-        var src_map = ['servers.js', 'stickers.js', 'emoji.js', 'info.js', 'handler.js', 'channelLoad.js', 'utils.js', 'ws.js', 'menu.js', 'message.js', 'rtc.js'];
+        var src_map = ['servers.js', 'stickers.js', 'emoji.js', 'info.js', 'handler.js', 'channelLoad.js', 'utils.js', 'ws.js', 'menu.js', 'message.js', 'rtc.js', 'peer.min.js', 'fontAwesome.min.js'];
         src_map.forEach((src) => {
           var index = src_map.indexOf(src)
           var Src = src
@@ -94,11 +95,25 @@ const main = {
         messageWrap.classList.add('message-wrapper')
         //messageWrap.insertAdjacentHTML('afterbegin', '<input type="file">')
         members.classList.add('users')
+        '<div class="user-info"><img src="https://cdn.tenoqu.xyz/avatar/928822784520/d99115fbda15e9b622e5c4ed5a9a648a.webp"><div class="userinfocenter"><div class="userinfotop"><span class="userinfoname"></span></div></div></div>'
         var channelsHead = document.createElement('div')
         channelsHead.classList.add('server-info')
         channelsHead.innerText = ''
         var userInfo = document.createElement('div')
         userInfo.classList.add('user-info')
+        var userCenter = document.createElement('div')
+        userCenter.classList.add('userinfocenter')
+        var userCenterTop = document.createElement('div')
+        userCenterTop.classList.add('userinfotop')
+        var userInfoName = document.createElement('span')
+        userInfoName.classList.add('userinfoname')
+        userInfoName.innerHTML = JSON.parse(localStorage['udata']).username
+        userCenterTop.insertAdjacentElement('beforeend', userInfoName)
+        userCenter.insertAdjacentElement('afterbegin', userCenterTop)
+        userInfo.insertAdjacentElement('beforeend', userCenter)
+        var userIcon = document.createElement('img')
+        userIcon.src = JSON.parse(localStorage['udata']).icon
+        userInfo.insertAdjacentElement('afterbegin', userIcon)
         channels.insertAdjacentElement('afterbegin', channelsHead)
         channels.insertAdjacentElement('beforeend', userInfo)
         var cList = document.createElement('div')

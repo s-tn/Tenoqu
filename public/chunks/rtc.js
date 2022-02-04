@@ -112,24 +112,28 @@ main.app.LoadVoiceChannel = async function() {
           myVideoStream = stream;
           addVideoStream(myVideo, stream);
 
-          peer.on("call", (call) => {
-            call.answer(stream);
-            otherPeer = call;
-            call.on("data", (data) => {
-              if (data == "end") {
-                console.log('yuayy')
-                call.close();
-                if (peer != null) {
-                  peer.destroy();
+          try {
+            peer.on("call", (call) => {
+              call.answer(stream);
+              otherPeer = call;
+              call.on("data", (data) => {
+                if (data == "end") {
+                  console.log('yuayy')
+                  call.close();
+                  if (peer != null) {
+                    peer.destroy();
+                  }
                 }
-              }
+              });
+              const video = document.createElement("video");
+              video.classList.add('epicvideo')
+              call.on("stream", (userVideoStream) => {
+                addVideoStream(video, userVideoStream);
+              });
             });
-            const video = document.createElement("video");
-            video.classList.add('epicvideo')
-            call.on("stream", (userVideoStream) => {
-              addVideoStream(video, userVideoStream);
-            });
-          });
+          } catch {stream.getTracks().forEach(function(track) {
+            track.stop();
+          });}
 
           var stream = stream
 
@@ -140,14 +144,16 @@ main.app.LoadVoiceChannel = async function() {
         });
 
       const connectToNewUser = async (userId, stream, uid) => {
-        const call = peer.call(userId, stream);
-        thisPeer = peer.connect(userId);
-        const video = document.createElement("div");
-        video.classList.add('epicvideo')
-        video.style.background = await main.app.request('icon', uid, [['v', '1']])
-        call.on("stream", (userVideoStream) => {
-          addVideoStream(video, userVideoStream);
-        });
+        try {
+          const call = peer.call(userId, stream);
+          thisPeer = peer.connect(userId);
+          const video = document.createElement("div");
+          video.classList.add('epicvideo')
+          video.style.background = await main.app.request('icon', uid, [['v', '1']])
+          call.on("stream", (userVideoStream) => {
+            addVideoStream(video, userVideoStream);
+          });
+        } catch {}
       };
 
       peer.on("open", (id) => {

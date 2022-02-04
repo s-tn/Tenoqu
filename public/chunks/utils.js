@@ -46,9 +46,10 @@ function CreateMessage(e) {
   var parser = new DOMParser();
   var content = parser.parseFromString(e.content, 'text/html')
   content.body.querySelectorAll('*').forEach(node => {
-    if (node.classList.contains('messageLink')&&node.tagName=='A'&&node.getAttribute('target')=='_blank'&&node.getAttribute('href')==node.innerText&&node.getAttribute('style')==null) {
-
+    if (false) {
+      console.log('link element')
     } else {
+      //console.log(node.outerHTML)
       content.body.innerHTML = content.body.innerHTML.replace(node.outerHTML, node.outerHTML.replace(/<\/([a-zA-Z0-9\-\s]+)/gmi, '<</span>/$1').replace(/<([a-zA-Z0-9\-\s]+)/gmi, '<<span>$1</span>'))
     }
   })

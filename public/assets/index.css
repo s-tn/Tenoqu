@@ -321,7 +321,7 @@ body {
   width: 32px;
   border-radius: 50%;
   cursor: pointer;
-  margin-right: auto;
+  margin-right: 15px;
   margin-left: 9px;
   height: 32px;
   aspect-ratio: 20/20;
@@ -424,6 +424,7 @@ body {
   background: #F0DDBC;
   display: flex;
   align-items: center;
+  
 }
 
 .name {
@@ -556,7 +557,7 @@ body {
 /* Channels */
 
 .clist {
-  height: calc(100% - 59px);
+  height: calc(100% - 109px);
   width: 100%;
   padding-top: 7px;
     user-select: none;
@@ -914,7 +915,7 @@ input[type=submit]:hover, .submit-btnn:hover {
 .tooltip {
   width: 150px;
   height: 200px !important;
-  z-index: 999999999999;
+  z-index: 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
   cursor: initial !important;
   background: #202225;
   position: absolute;
@@ -1108,7 +1109,7 @@ d:hover {
   margin-bottom: 5px;
   margin-left: -80px;
   padding: 7px;
-  width: 160px;
+  width: 120px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -1145,3 +1146,8 @@ d:hover {
   filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
+/* ------------------------------------------------ */
+
+
+/* Emoji Styling */
+@import url('https://emoji-css.afeld.me/emoji.css');
