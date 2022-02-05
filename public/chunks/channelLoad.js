@@ -8,6 +8,7 @@ main.app.loadChannel = async () => {
   var type = 'public'
   if (!/[0-9]{12}/.test(location.pathname.split('/').splice(3, 1))) type = 'private'
   if (location.pathname == '/channels/@me') type = 'friends'
+  console.log(type)
   var messages = await main.app.request('messages', location.pathname.split('/').splice(3, 1), [['v', '1']])
   if (messages[0]=='failed') return main.app.FailLoad();
   document.querySelector('#message-wrap').innerHTML = messages.map(e => {

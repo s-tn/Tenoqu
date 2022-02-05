@@ -3,5 +3,5 @@ main.app.home={};main.app.home.load = async function() {
   document.querySelectorAll('.selected').forEach(e => e.classList.remove('selected'))
   HomeBTN.classList.add('selected')
   main.app.redirect('channels/@me')
-  
+  main.app.loadChannel()
 }
