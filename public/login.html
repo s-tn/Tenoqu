@@ -19,11 +19,17 @@ Backend by @EnderKingJ#0001
 	<link rel="icon" type="image/x-icon" href="https://cdn.tenoqu.xyz/servericons/928375302938/8be52e156c5346ed9e732a2076dbac1f.svg">
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 	 crossorigin="anonymous">
+
 	</script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js">
+
 	</script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.js">
+
+	</script>
+	<!-- HCAPTCHA -->
+	<script src="https://js.hcaptcha.com/1/api.js?hl=es&onload=myFunction&render=explicit" async defer>
 	</script>
 </head>
 
@@ -41,7 +47,10 @@ Backend by @EnderKingJ#0001
                     <div class="formDiv" style="transition-delay: 0.4s">
                         <p>PASSWSORD</p><input id="pass-input" type="password" required="" /><a class="forgotPas" href="#">FORGOT YOUR PASSWORD?</a>
                     </div>
-                    <div class="formDiv" style="transition-delay: 0.6s"><button class="acceptBtn" type="submit">Login</button><span class="register">Need an account?<a href="join">Register</a></span></div>
+
+                    <div class="formDiv" style="transition-delay: 0.6s">
+                      <div class="h-captcha"
+                      data-sitekey="5fa04250-dd49-4825-9046-f4551663bd25" data-theme="dark" data-size="normal"> </div> <button class="acceptBtn" type="submit">Login</button><span class="register">Need an account?<a href="join">Register</a></span></div>
                 </div>
             </form>
         </div>
