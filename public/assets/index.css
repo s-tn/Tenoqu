@@ -1172,3 +1172,7 @@ d:hover {
 .condensed div:first-of-type {
   height: 0px;
 }
+
+.condensed .mess-cont {
+  margin-left: 50px !important;
+}

@@ -12,7 +12,7 @@
       {
         "id": "dc36d00d-db22-4cd2-9a25-f911826cdfad",
         "line": 24,
-        "version": 942,
+        "version": 1055,
         "index": 785
       }
     ],
@@ -36,7 +36,7 @@
       {
         "id": "de855b8c-75bb-47f4-8274-1ec3ee0d3286",
         "line": 1,
-        "version": 3176,
+        "version": 3425,
         "index": 0
       }
     ],
@@ -59,9 +59,9 @@
     "public/chunks/channelLoad.js": [
       {
         "id": "aad479c3-dd96-42ed-a8ac-5cf3c8a708b2",
-        "line": 109,
-        "version": 5239,
-        "index": 4998
+        "line": 122,
+        "version": 5726,
+        "index": 5901
       }
     ],
     "public/join.html": [
@@ -84,8 +84,8 @@
       {
         "id": "1f30debf-5fdc-4df1-89d1-52ed528233c7",
         "line": 43,
-        "version": 73,
-        "index": 1055
+        "version": 75,
+        "index": 1057
       }
     ],
     "ws.js": [
