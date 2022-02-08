@@ -51,7 +51,7 @@ function CreateMessage(e, tfalse) {
   var content = parser.parseFromString(e.content, 'text/html')
   //if (e.server) {
     content.body.querySelectorAll('*').forEach(node => {
-      if (node.tagName=='A'&&node.classList.contains('messageLink')&&node.href.toString()==node.innerText&&node.getAttribute('target')=='_blank') {
+      if ((node.tagName=='A'&&node.classList.contains('messageLink')&&node.href.toString()==node.innerText&&node.getAttribute('target')=='_blank')||(node.tagName=='IMG'&&node.classList.contains('imageMessage')&&node.getAttribute('id'))) {
         
       } else {
         //console.log(node.outerHTML)
@@ -87,8 +87,10 @@ function CreateMessage(e, tfalse) {
   return message
 }
 
+var Over;
+
 setTimeout(() => {
-  var Over = document.createElement('div')
+  Over = document.createElement('div')
   function initDivMouseOver() {
     var div = [...document.querySelectorAll('.users, .guilds, .message-wrapper, .channels')]
     div.forEach(div => {
@@ -114,8 +116,69 @@ setTimeout(() => {
   })
 }, 1000)
 
+window.addEventListener("paste", function(e){
+    if (Over.classList.contains('users') || Over.classList.contains('guilds') || Over.classList.contains('message-wrapper') || Over.classList.contains('channels') && document.querySelector('.ii') && document.querySelector('.ii')!==document.activeElement&&(document.querySelector('.ii').focused==undefined||document.querySelector('.ii').focused==false)) {
+        // Handle the event
+        retrieveImageFromClipboardAsBlob(e, function(imageBlob){
+            // If there's an image, display it in the canvas
+            if(imageBlob){
+                var canvas = document.getElementById("mycanvas");
+                var ctx = canvas.getContext('2d');
+                
+                // Create an image to render the blob on the canvas
+                var img = new Image();
+
+                // Once the image loads, render the img on the canvas
+                img.onload = function(){
+                    // Update dimensions of the canvas with the dimensions of the image
+                    canvas.width = this.width;
+                    canvas.height = this.height;
+
+                    // Draw the image
+                    ctx.drawImage(img, 0, 0);
+                };
+
+                // Crossbrowser support for URL
+                var URLObj = window.URL || window.webkitURL;
+
+                // Creates a DOMString containing a URL representing the object given in the parameter
+                // namely the original Blob
+                img.src = URLObj.createObjectURL(imageBlob);
+            }
+        });
+    }
+}, false);
+
+
 if(window.$corrosion) {
   //while(1) alert('fuck you')
+}
+
+function retrieveImageFromClipboardAsBlob(pasteEvent, callback){
+	if(pasteEvent.clipboardData == false){
+        if(typeof(callback) == "function"){
+            callback(undefined);
+        }
+    };
+
+    var items = pasteEvent.clipboardData.items;
+
+    if(items == undefined){
+        if(typeof(callback) == "function"){
+            callback(undefined);
+        }
+    };
+
+    for (var i = 0; i < items.length; i++) {
+        // Skip content if not image
+        if (items[i].type.indexOf("image") == -1) continue;
+        // Retrieve image on clipboard as blob
+        var blob = items[i].getAsFile();
+
+        if(typeof(callback) == "function"){
+            callback(blob);
+        }
+    }
 }
 
 if (!localStorage['serversStored']) localStorage.setItem('serversStored', JSON.stringify({}))

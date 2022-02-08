@@ -300,7 +300,7 @@ function imageify(text) {
     } else {
       var split = text.split(" ", 1);
       var end = text.split(' ').slice(1).join(' ')
-      text = "<img src='" + split + "'>" + ' ' + end
+      text = "<img id='"+Math.floor(Math.random()*(328532-1034)+1034)+"' class='imageMessage' src='" + split + "'>" + ' ' + end
     }
   }
   return text

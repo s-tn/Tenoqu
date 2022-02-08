@@ -12,7 +12,7 @@ const Icon = require('./icon.js');
 class TenoquApi {
   constructor(app) {
     return function(req, res, next) {
-      if (req.method != 'GET') return res.status(403).end('')
+      if (req.method != 'GET' && req.method != 'POST') return res.status(403).end('')
       var Version = ''
       var Method = ''
       req.url.replace(/\/v([0-9])\//g, (e, p) => Version = p)
