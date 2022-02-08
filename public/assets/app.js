@@ -289,7 +289,7 @@ function code() {
 function urlify(text) {
   var urlRegex = /(https?:\/\/[^\s]+)/g;
   return text.replace(urlRegex, function(url) {
-    return '<a target="_blank" class="messageLink" href="' + url + '">' + url + '</a>';
+    return '<a target="_blank" class="messageLink" href="' + url + '">' + (url.endsWith('/')?url:url+'/') + '</a>';
   })
 }
 

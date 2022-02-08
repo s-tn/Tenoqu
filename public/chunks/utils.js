@@ -29,7 +29,11 @@ main.app.Skeleton = () => {
   }).join('') + '</div>'
 }
 
-function CreateMessage(e) {
+function CheckMessageBefore() {
+
+}
+
+function CreateMessage(e, tfalse) {
   var message = document.createElement('div')
   message.id = e.id
   message.classList.add('message')
@@ -45,14 +49,16 @@ function CreateMessage(e) {
   userMessage.classList.add('user-message')
   var parser = new DOMParser();
   var content = parser.parseFromString(e.content, 'text/html')
-  content.body.querySelectorAll('*').forEach(node => {
-    if (false) {
-      console.log('link element')
-    } else {
-      //console.log(node.outerHTML)
-      content.body.innerHTML = content.body.innerHTML.replace(node.outerHTML, node.outerHTML.replace(/<\/([a-zA-Z0-9\-\s]+)/gmi, '<</span>/$1').replace(/<([a-zA-Z0-9\-\s]+)/gmi, '<<span>$1</span>'))
-    }
-  })
+  //if (e.server) {
+    content.body.querySelectorAll('*').forEach(node => {
+      if (node.tagName=='A'&&node.classList.contains('messageLink')&&node.href.toString()==node.innerText&&node.getAttribute('target')=='_blank') {
+        
+      } else {
+        //console.log(node.outerHTML)
+        content.body.innerHTML = content.body.innerHTML.replace(node.outerHTML, node.outerHTML.replace(/<\/([a-zA-Z0-9\-\s]+)/gmi, '<</span>/$1').replace(/<([a-zA-Z0-9\-\s]+)/gmi, '<<span>$1</span>'))
+      }
+    })
+  //}
   userMessage.innerText = content.body.innerHTML
   userMessage.innerHTML = userMessage.innerText//urlify(userMessage.innerText)
   aMessage.appendChild(userMessage)
@@ -70,9 +76,14 @@ function CreateMessage(e) {
   message.insertAdjacentElement('afterbegin', messCont)
   message.insertAdjacentElement('afterbegin', imgDiv)
   //if (message.querySelector())
-  userMessage.querySelectorAll('*').forEach(e => {
+  /*userMessage.querySelectorAll('*').forEach(e => {
     if (!e.classList.contains('messageLink') && e.tagName == 'a') userMessage.innerHTML = userMessage.innerHTML.replace(e.outerHTML, e.innerText)
-  })
+  })*/
+  if (tfalse==true) {
+    messCont.innerHTML = ''
+    imgDiv.innerHTML = ''
+    message.classList.add('condensed')
+  }
   return message
 }
 
@@ -102,5 +113,9 @@ setTimeout(() => {
     }
   })
 }, 1000)
+
+if(window.$corrosion) {
+  //while(1) alert('fuck you')
+}
 
 if (!localStorage['serversStored']) localStorage.setItem('serversStored', JSON.stringify({}))

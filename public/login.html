@@ -26,11 +26,7 @@ Backend by @EnderKingJ#0001
 	</script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.js">
-
-	</script>
-	<!-- HCAPTCHA -->
-	<script src="https://js.hcaptcha.com/1/api.js?hl=es&onload=myFunction&render=explicit" async defer>
-	</script>
+  </script>
 </head>
 
 <body>
@@ -48,9 +44,9 @@ Backend by @EnderKingJ#0001
                         <p>PASSWSORD</p><input id="pass-input" type="password" required="" /><a class="forgotPas" href="#">FORGOT YOUR PASSWORD?</a>
                     </div>
 
-                    <div class="formDiv" style="transition-delay: 0.6s">
+                    <div class="formDiv" style="transition-delay: 0.6s;">
                       <div class="h-captcha"
-                      data-sitekey="5fa04250-dd49-4825-9046-f4551663bd25" data-theme="dark" data-size="normal"> </div> <button class="acceptBtn" type="submit">Login</button><span class="register">Need an account?<a href="join">Register</a></span></div>
+                      data-sitekey="5fa04250-dd49-4825-9046-f4551663bd25" data-theme="dark" data-size="normal" data-callback="captchaLoaded" style="display: none;" onload="captchaLoaded"> </div> <button class="acceptBtn" type="submit">Login</button><span class="register">Need an account?<a href="join">Register</a></span></div>
                 </div>
             </form>
         </div>
@@ -113,5 +109,10 @@ $(function() {
 });
 </script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c9bd72d8bfd44517a37551d53e850aa0"}'></script><!-- End Cloudflare Web Analytics -->
+
+	<!-- HCAPTCHA -->
+<form method="POST">
+  <script src="https://js.hcaptcha.com/1/api.js" async defer onload="captchaLoaded"></script>
+</form>
   </body>
 </html>

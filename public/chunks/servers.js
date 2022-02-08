@@ -22,7 +22,7 @@ async function ServerLoader() {
       SLDIV.classList.add('sl-eae')
       SLDIV.insertAdjacentHTML('beforeend', `<img width="55" height="55" src="${a.icon}" style="border-radius:50%;">`)
       server.insertAdjacentElement('beforeend', SLDIV)
-      try {document.querySelector('#servers').insertAdjacentElement('beforeend', server)} catch {return location.relaod(1)}
+      try {document.querySelector('#servers').insertAdjacentElement('beforeend', server)} catch {return location.reload(1)}
       server.addEventListener('click', main.app.handleServer(server, a))
       if (location.pathname.split('/').splice(2, 1)==id) {
         server.click()

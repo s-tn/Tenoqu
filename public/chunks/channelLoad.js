@@ -11,8 +11,10 @@ main.app.loadChannel = async () => {
   console.log(type)
   var messages = await main.app.request('messages', location.pathname.split('/').splice(3, 1), [['v', '1']])
   if (messages[0]=='failed') return main.app.FailLoad();
-  document.querySelector('#message-wrap').innerHTML = messages.map(e => {
-    var message = CreateMessage(e)
+  document.querySelector('#message-wrap').innerHTML = messages.map((e, ind) => {
+    var a = false;
+    if (messages[ind-1]&&messages[ind-1].author==JSON.parse(localStorage['udata']).username&&messages[ind-1].hash==JSON.parse(localStorage['udata']).hash) a = true
+    var message = CreateMessage(e, a)
     /*var message = document.createElement('div')
     message.id = e.id
     message.classList.add('message')

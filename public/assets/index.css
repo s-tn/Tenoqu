@@ -1152,3 +1152,23 @@ d:hover {
 
 /* Emoji Styling */
 @import url('https://emoji-css.afeld.me/emoji.css');
+
+
+/* EPIC AFTER MESSAGE */
+
+.condensed .amessage {
+  margin: 3px 0;
+}
+
+.condensed .user-message {
+  top: 0;
+  left: 0;
+}
+
+.condensed {
+  padding: 0px 0 2px 20px;
+}
+
+.condensed div:first-of-type {
+  height: 0px;
+}
