@@ -592,16 +592,21 @@ body {
   /**/
   
 }
+@font-face {
+  src: url("/assets/witmid.ttf");
+  font-family: Whitney;
+}
 
 .category-name {
   color: rgb(143, 146, 150);
-  font-family: heacy;
+  font-family: Whitney;
   font-size: 15px;
   font-weight: bold;
   display: block;
   margin-left: 9px;
   text-transform: uppercase;
   margin-bottom:3px;
+  font-family: ;
 }
 
 .caels {
@@ -624,6 +629,7 @@ body {
   content: "# ";
   transition: 0.2s;
   color: rgb(143, 146, 150);
+  font-family: Whitney;
 }
 
 .channelselected {

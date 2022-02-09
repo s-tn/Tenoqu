@@ -11,9 +11,9 @@
     "lib/auth.js": [
       {
         "id": "dc36d00d-db22-4cd2-9a25-f911826cdfad",
-        "line": 24,
-        "version": 1055,
-        "index": 785
+        "line": 22,
+        "version": 1066,
+        "index": 722
       }
     ],
     "package.json": [
@@ -59,9 +59,9 @@
     "public/chunks/channelLoad.js": [
       {
         "id": "aad479c3-dd96-42ed-a8ac-5cf3c8a708b2",
-        "line": 122,
-        "version": 5726,
-        "index": 5901
+        "line": 123,
+        "version": 5729,
+        "index": 5904
       }
     ],
     "public/join.html": [
