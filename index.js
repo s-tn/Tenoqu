@@ -6,6 +6,8 @@
 const express = require('express');
 var app = express();
 
+app.use(require('body-parser').text())
+
 const fs = require('fs')
 
 const Login = require('./lib/login')
@@ -19,6 +21,14 @@ app.Login = Login(app)
 var { app } = require('./lib/auth')(app)
 
 var { app, Wss } = require('./lib/ws')(app)
+
+var Events = require('./bot/events')
+
+if (!Events.done) {
+  Events.done = true
+  Events(app)
+  console.log('doing events')
+}
 
 var { app, Route } = require('./lib/route')(app)
 

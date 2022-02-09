@@ -13,7 +13,7 @@ main.app.loadChannel = async () => {
   if (messages[0]=='failed') return main.app.FailLoad();
   document.querySelector('#message-wrap').innerHTML = messages.map((e, ind) => {
     var a = false;
-    if (messages[ind-1]) console.log(new Date(messages[ind-1].timestamp)<new Date(new Date(e.timestamp).getTime()+(1000*60*15)).getTime())
+    //if (messages[ind-1]) console.log(new Date(messages[ind-1].timestamp)<new Date(new Date(e.timestamp).getTime()+(1000*60*15)).getTime())
     if (messages[ind-1]&&messages[ind-1].author+messages[ind-1].hash==e.author+e.hash&&new Date(messages[ind-1].timestamp)<new Date(new Date(e.timestamp).getTime()+(1000*60*15)).getTime()) a = true
     var message = CreateMessage(e, a)
     /*var message = document.createElement('div')
