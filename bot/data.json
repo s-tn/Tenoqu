@@ -1,13 +1,46 @@
 {
-  "bots": {"238956349831": {
-    "name": "Tenoqu Bot",
-    "hash": "3253",
-    "uid": "238956349831"
-  }},
+  "bots": {
+    "238956349831": {
+      "name": "Tenoqu Bot <span class='bot-tag'>BOT &nbsp;✓</span>",
+      "hash": "3253",
+      "uid": "238956349831",
+      "icon": "https://cdn.tenoqu.xyz/servericons/928375302938/8be52e156c5346ed9e732a2076dbac1f.svg"
+    },
+    "325987346887": {
+      "name": "696969 Bot <span class='bot-tag'>BOT &nbsp;✓</span>",
+      "hash": "0001",
+      "uid": "325987346887",
+      "icon": "https://cdn.tenoqu.xyz/servericons/928375302938/8be52e156c5346ed9e732a2076dbac1f.svg"
+    },
+    "230157981263": {
+      "icon": "https://media.discordapp.net/attachments/939371938797748224/941384254674317362/alt2.png",
+      "name": "Rural's alt <span class='bot-tag'>BOT &nbsp;✓</span>",
+      "hash": "4162",
+      "uid": "230157981263"
+    },
+    "883769039656": {
+      "icon": "https://media.discordapp.net/attachments/934618381351542824/934966089358647356/smallhost.png",
+      "name": "SmallBot <span class='bot-tag'>BOT &nbsp;✓</span>",
+      "hash": "6969",
+      "uid": "883769039656"
+    }
+  },
   "data": [
     {
       "uid": "238956349831",
       "token": "MjM4OTU2MzQ5ODMx.GYYBTFY534FBGV.GNYUG43626"
+    },
+    {
+      "uid": "325987346887",
+      "token": "MzI1OTg3MzQ2ODg3.3257y34nchNGYUG.NG87yt2n8fiy8GF"
+    },
+    {
+      "uid": "230157981263",
+      "token": "MjMwMTU3OTgxMjYz.3289UNYUIY876.87tb8uyt8987GTBUg"
+    },
+    {
+      "uid": "883769039656",
+      "token": "ODgzNzY5MDM5NjU2.43f636fYYUB78.gb785GFGf656"
     }
   ]
 }

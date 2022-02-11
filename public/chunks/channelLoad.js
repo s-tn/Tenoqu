@@ -9,12 +9,10 @@ main.app.loadChannel = async () => {
   var type = 'public'
   if (!/[0-9]{12}/.test(location.pathname.split('/').splice(3, 1))) type = 'private'
   if (location.pathname == '/channels/@me') type = 'friends'
-  console.log(type)
   var messages = await main.app.request('messages', location.pathname.split('/').splice(3, 1), [['v', '1']])
   if (messages[0]=='failed') return main.app.FailLoad();
   document.querySelector('#message-wrap').innerHTML = messages.map((e, ind) => {
     var a = false;
-    //if (messages[ind-1]) console.log(new Date(messages[ind-1].timestamp)<new Date(new Date(e.timestamp).getTime()+(1000*60*15)).getTime())
     if (messages[ind-1]&&messages[ind-1].author+messages[ind-1].hash==e.author+e.hash&&new Date(messages[ind-1].timestamp)<new Date(new Date(e.timestamp).getTime()+(1000*60*15)).getTime()) a = true
     var message = CreateMessage(e, a)
     /*var message = document.createElement('div')
@@ -70,11 +68,10 @@ main.app.LoadServer = async (el, server) => {
       document.querySelector('.clist').insertAdjacentElement('beforeend', a)
     })
     await new Promise(e => setTimeout(e, 50))
-    //console.log(document.querySelector(`.cat[data-catid="${oa}"]`)) amogus 
     await main.app.loadChannels(server)
     document.querySelector('.server-info').innerText = server.name
   } else {
-    console.log('broke')
+    location.reload(1)
   }
 }
 

@@ -33,4 +33,9 @@
     "name": "♯ General",
     "type": "text"
   }
+  ,
+  "999488201103": {
+    "name": "♯ bot-testing",
+    "type": "text"
+  }
 }

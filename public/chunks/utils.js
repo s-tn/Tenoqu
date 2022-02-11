@@ -39,7 +39,7 @@ function CreateMessage(e, tfalse) {
   message.classList.add('message')
   var imgDiv = document.createElement('div')
   var img = document.createElement('img')
-  img.setAttribute('src', e.icon)
+  img.setAttribute('src', Icon(e.icon))
   imgDiv.appendChild(img)
   var messCont = document.createElement('div')
   messCont.classList.add('mess-cont')
@@ -51,7 +51,7 @@ function CreateMessage(e, tfalse) {
   var content = parser.parseFromString(e.content, 'text/html')
   //if (e.server) {
     content.body.querySelectorAll('*').forEach(node => {
-      if ((node.tagName=='A'&&node.classList.contains('messageLink')&&node.href.toString()==node.innerText&&node.getAttribute('target')=='_blank')||(node.tagName=='IMG'&&node.classList.contains('imageMessage')&&node.getAttribute('id'))) {
+      if ((node.tagName=='A'&&node.classList.contains('messageLink')&&node.href.toString()==node.innerText&&node.getAttribute('target')=='_blank')||(node.tagName=='IMG'&&node.classList.contains('imageMessage')&&node.getAttribute('id'))||node.tagName=='BR') {
         
       } else {
         //console.log(node.outerHTML)

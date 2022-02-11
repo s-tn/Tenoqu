@@ -17,6 +17,6 @@ module.exports = function(req, res, app) {
     var yes = false;
     a.data.map(e => {e.token==data.token?yes=e.uid:null})
     if (yes==false) return res.writeHead(403).end(JSON.stringify({status: 403, message: 'Unauthorized'}))
-    res.json({user: a.bots[yes].name})
+    res.json({user: a.bots[yes].name, uid: a.bots[yes].uid, icon: a.bots[yes].icon, hash: a.bots[yes].hash})
   })
 }

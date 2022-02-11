@@ -66,7 +66,6 @@ main.app.LoadVoiceChannel = async function() {
         document.querySelector(".main__left").style.display = "none";
         document.querySelector(".header__back").style.display = "block";
       });*/
-      //console.log(parent[0].localStorage)
       //try{window.user = JSON.parse(parent[0].localStorage['udata']).username}catch{window.user = prompt('')};
 
       var peer = new Peer(undefined, {
@@ -77,7 +76,6 @@ main.app.LoadVoiceChannel = async function() {
 
       function endCall() {
         if (otherPeer) {
-          //console.log(otherPeer)
           //otherPeer.send("end");
         }
         if (thisPeer != null) {
@@ -118,7 +116,6 @@ main.app.LoadVoiceChannel = async function() {
               otherPeer = call;
               call.on("data", (data) => {
                 if (data == "end") {
-                  console.log('yuayy')
                   call.close();
                   if (peer != null) {
                     peer.destroy();

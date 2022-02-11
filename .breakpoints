@@ -20,7 +20,7 @@
       {
         "id": "30791651-d25f-4789-9f5b-8032df2c5b58",
         "line": 26,
-        "version": 33,
+        "version": 34,
         "index": 637
       }
     ],
@@ -58,10 +58,16 @@
     ],
     "public/chunks/channelLoad.js": [
       {
+        "id": "b0d58010-2ccf-43e8-99ed-55fa816e724e",
+        "line": 19,
+        "version": 5750,
+        "index": 1062
+      },
+      {
         "id": "aad479c3-dd96-42ed-a8ac-5cf3c8a708b2",
-        "line": 123,
-        "version": 5729,
-        "index": 5904
+        "line": 120,
+        "version": 5733,
+        "index": 5663
       }
     ],
     "public/join.html": [
