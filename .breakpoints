@@ -20,8 +20,8 @@
       {
         "id": "30791651-d25f-4789-9f5b-8032df2c5b58",
         "line": 26,
-        "version": 34,
-        "index": 637
+        "version": 33,
+        "index": 635
       }
     ],
     "public/@me/index.html": [
@@ -65,9 +65,9 @@
       },
       {
         "id": "aad479c3-dd96-42ed-a8ac-5cf3c8a708b2",
-        "line": 120,
-        "version": 5733,
-        "index": 5663
+        "line": 119,
+        "version": 5750,
+        "index": 5583
       }
     ],
     "public/join.html": [

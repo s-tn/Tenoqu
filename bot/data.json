@@ -23,6 +23,12 @@
       "name": "SmallBot <span class='bot-tag'>BOT &nbsp;✓</span>",
       "hash": "6969",
       "uid": "883769039656"
+    }, 
+    "309786892517": {
+      "uid": "309786892517",
+      "icon": "https://cdn.discordapp.com/avatars/740766194092736543/a739683bec43c39677967b710cc6a4d7.png",
+      "name": "-Avdol- <span class='bot-tag'>BOT &nbsp;✓</span>",
+      "hash": "6969"
     }
   },
   "data": [
@@ -41,6 +47,10 @@
     {
       "uid": "883769039656",
       "token": "ODgzNzY5MDM5NjU2.43f636fYYUB78.gb785GFGf656"
+    },
+    {
+      "uid": "309786892517",
+      "token": "MzA5Nzg2ODkyNTE3.87YUTBytbu7.86yutvbUTYRF6 67TF"
     }
   ]
 }
