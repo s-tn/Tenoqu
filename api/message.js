@@ -6,9 +6,13 @@
 const fs = require('fs')
 
 module.exports = function(req, res, app) {
+  var num = 50
+  if (req.query.limit) num = req.query.limit
+  if (num>200) return []
   var Paths = ''
   req.url.replace(/\/v[0-9]\/[a-zA-Z0-9]+\/(.*)/g, (e, p) => Paths = p.split('?')[0])
   var Data = JSON.parse(fs.readFileSync('./data/messages.json'))
   if (!Data[Paths]) return res.writeHead(405).end('Channel Does Not Exist')
-  res.json(Data[Paths].splice(Data[Paths].length - 50, 50))
+  res.json(Data[Paths].splice(Data[Paths].length - num, num))
+  return Data[Paths].splice(Data[Paths].length - num, num)
 }

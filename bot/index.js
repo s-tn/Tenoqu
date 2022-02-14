@@ -8,6 +8,7 @@ var fs = require('fs')
 var Listen = require('./listen')
 var Events = require('./events')
 var Channel = require('./channel')
+var Message = require('../api/message.js')
 
 module.exports = function(req, res, app) {
   var Paths = ''
@@ -17,6 +18,9 @@ module.exports = function(req, res, app) {
   }
   if (Paths=='channels') {
     return Channel(req, res, app)
+  }
+  if (Paths=='messages') {
+    return Message(req, res, app)
   }
   res.writeHead(500).end('{}')
 }
