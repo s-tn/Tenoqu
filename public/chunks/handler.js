@@ -44,4 +44,11 @@ main.app.handleHome = function() {
   }
 }
 
+main.app.settingsHandler = function(el, div) {
+  return function(event) {
+    document.querySelectorAll('.settings-selector.selected').forEach(e => e.classList.remove('selected'))
+    el.classList.add('selected')
+  }
+}
+
 main.app.onload = function() {if (window.doneHomeFriendLink==false) {document.querySelector('.home-label.server-init').addEventListener('click', main.app.handleHome());window.doneHomeFriendLink=true}}

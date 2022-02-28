@@ -322,7 +322,7 @@ body {
   border-radius: 50%;
   cursor: pointer;
   margin-right: 15px;
-  margin-left: 9px;
+  margin-left: -25px;
   height: 32px;
   aspect-ratio: 20/20;
 }

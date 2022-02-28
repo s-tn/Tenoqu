@@ -12,7 +12,7 @@
       {
         "id": "dc36d00d-db22-4cd2-9a25-f911826cdfad",
         "line": 22,
-        "version": 1066,
+        "version": 1103,
         "index": 722
       }
     ],
@@ -74,8 +74,8 @@
       {
         "id": "fe29e19c-4fb6-41f8-a799-3f8e684394ea",
         "line": 75,
-        "version": 1086,
-        "index": 3295
+        "version": 1087,
+        "index": 3294
       }
     ],
     "public/style.css": [
