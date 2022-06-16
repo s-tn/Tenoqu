@@ -5,7 +5,7 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.ready.then(registration => {
         //const channel = new MessageChannel();
         registration.active.postMessage('*', {});
-        location.reload();
+        //location.reload();
     })
 } else {
     const firefox = false; 

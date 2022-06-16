@@ -65,6 +65,7 @@ const main = {
       })
     },
     request: async (method, path, query) => {
+      console.log(path)
       var e = await fetch('/api/v' + window.TenoquOpts.apiVersion + '/' + method + '/' + path + query.map((e, i) => i == 0 ? `?${e[0]}=${e[1]}` : `&${e[0]}=${e[1]}`).join(''), { method: 'GET', headers: { 'content-type': 'text/js', 'Authorization': localStorage['token'] } })
       if (e.status !== 200) { worker.log('Channel Fetch Failed: ' + (path == '' ? undefined : path)); return ['failed'] }
       return e.json()
@@ -178,6 +179,11 @@ const main = {
         var settings = document.createElement('div')
         settings.classList.add('settings-container')
         document.body.insertAdjacentElement('beforeend', settings)
+        var closeSettings = document.createElement('div')
+        closeSettings.classList.add('settings-close')
+        closeSettings.innerHTML = '<i class="fa-solid fa-arrow-left"></i>'
+        closeSettings.addEventListener('click', () => settings.classList.remove('visible'))
+        settings.insertAdjacentElement('afterbegin', closeSettings)
         var sidebarSettings = document.createElement('div')
         sidebarSettings.classList.add('settings-sidebar')
         sidebarSettings.innerHTML = '<span class="settings-selector">Profile</span><span class="settings-selector">Account</span><span class="settings-selector">Appearance</span><span class="settings-selector">Fonts</span><span class="settings-selector">Themes</span><span class="settings-selector">Messages</span><span class="settings-selector">Plugins</span><span class="settings-selector">Keybinds</span><span class="settings-selector">Notifications</span>'

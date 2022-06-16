@@ -1295,10 +1295,16 @@ span:active .modal:hover {
   height: 100vh;
   background: #404040;
   top: 0;
-  display: none;
-  z-index: 9999999999999999999999999999;
+  display: block;
+  z-index: -1;
   left: 0;
   position: absolute;
+  transition: 0.25s ease opacity;
+  opacity: 0;
+}
+
+.settings-container.visible {
+  z-index: 9999999999999999999999999999 !important;
 }
 
 .settings-sidebar::before {
@@ -1347,4 +1353,31 @@ span:active .modal:hover {
   background: #808080;
 }
 
-.visible {display:block;}
+.settings-close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  height: 20px;
+  padding: 10px;
+  width: 20px;
+  color: white;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(255, 255, 255, 0.2);
+  border: 1px solid rgb(255, 255, 255, 0.7);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+.settings-close:hover {
+  background: rgb(255, 255, 255, 0.3);
+}
+
+.settings-close:active {
+  background: rgb(255, 255, 255, 0.5);
+}
+
+.visible {display:block;opacity:1;visibility: visible;}

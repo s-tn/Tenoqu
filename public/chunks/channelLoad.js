@@ -71,7 +71,7 @@ main.app.LoadServer = async (el, server) => {
     await main.app.loadChannels(server)
     document.querySelector('.server-info').innerText = server.name
   } else {
-    location.reload(1)
+    //location.reload(1)
   }
 }
 
