@@ -9,7 +9,7 @@ This website and it's function is completely closed source. Please do not attemp
   display: none !important;
 }
 @font-face {
-  src: url('/assets/lazy_dog.ttf');
+  src: url('/assets/fonts/lazy_dog.ttf');
   font-family: 'lazydog';
 }
 
